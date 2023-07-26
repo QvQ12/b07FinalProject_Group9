@@ -32,8 +32,26 @@ FLOWMAP OF THE APP
     - for shopper:
         - 3 pages from the menubar: 1) products 2) cart 3) orders
 TODO:
-    - login page
-    - connect to firebase
+    - login page 
+    - connect to firebase 
+
+July 15th meeting
+Talked about:
+    - created a working firebase database, 
+    - linking the firebase with the login page.
+    - design for the owner and shopper's page.
+Obstacle from the last meeting:
+    - step up the firebase (had a lot of trouble with gradle and using firebase)
+    - linking the login and signup pages together.
+Completed:
+    - outline of the login page (by Cristal, Jenna and Raymond)
+    - setup firebase (by Miko and Alvin)
+TODO:
+    - design of the shopper's page (assigned to Raymond)
+    - design of the owners's page (assigned to Jenna)
+    - working further into the design of the login page (assigned to Cristal) and
+    - Connecting the firebase and other features with the login page (Assigned to Miko and Alvin)
+    
 
 
 
