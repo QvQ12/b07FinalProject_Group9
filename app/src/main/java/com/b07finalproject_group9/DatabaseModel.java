@@ -50,5 +50,9 @@ public class DatabaseModel {
         orderInfo.put("store", store);
         orderInfo.put("quantity", quantity);
         shopperRef.child(orderId).setValue(orderInfo);
+
+
+
+        
     }
 }
