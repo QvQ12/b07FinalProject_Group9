@@ -11,7 +11,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
         DatabaseModel db = new DatabaseModel();
-        db.storeSignUp("a","b");
+        db.storeSignUp("Nike","123");
+        db.shopperSignUp("Johnny","456s");
+        db.addProduct("Air Force 1", "NIke", 200, 5);
+        db.addOrder("Nike", 1);
         setContentView(R.layout.main_activity);
     }
 }
