@@ -46,13 +46,30 @@ Obstacle from the last meeting:
 Completed:
     - outline of the login page (by Cristal)
     - setup firebase (by Miko and Alvin)
-TODO:
+TODO - next meeting 28th July: 
     - design of the shopper's page (assigned to Raymond)
     - design of the owners's page (assigned to Jenna)
     - working further into the design of the login page (assigned to Cristal) and
     - Connecting the firebase and other features with the login page (Assigned to Miko and Alvin)
-    
 
+July 28th Meeting
+Talked about:
+    - 
+    - further discussion on design for the owner and shopper's page.
+Obstacle from the last meeting:
+    - design conflicts.
+    - linking the pages together.
+    - pushing and cloning git. 
+Completed:
+    - outline for owner's page including the order page and add page (by Jenna)
+    - outline for shopper's page including the main page and linked to cart and ready to pick up (by Raymond)
+    - added more features to the login pages (by Cristal)
+    - way to write and reading to firebase, structure of data to the firebase (by Miko and Alvin)
+TODO - next meeting 31st July:
+    - Work on the carts and read to pickup pages  of the shopper's page (assigned to Raymond)
+    - Work on the adding to products and ordering pages of the owners's page (assigned to Jenna)
+    - Connecting the owner's and shopper's pages from login page (assigned to Cristal) and
+    - Linking the login pages and working further on the structure of the firebase (Assigned to Miko and Alvin)
 
 
 
