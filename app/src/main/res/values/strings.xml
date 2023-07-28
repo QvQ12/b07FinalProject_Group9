@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">b07FinalProject_Group9</string>
+    <string name="app_name">B07ProjectLogin</string>
+    <string name="shopperlogin">ShopperLogin</string>
+    <string name="username">username:</string>
+    <string name="password">password:</string>
+    <string name="login">Login</string>
+    <string name="ownerlogin">OwnerLogin</string>
+    <string name="shoppersignup">ShopperSignup</string>
+    <string name="signup">Signup</string>
+    <string name="ownersignup">OwnerSignup</string>
 </resources>
