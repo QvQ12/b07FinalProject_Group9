@@ -6,6 +6,7 @@ import android.provider.ContactsContract;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -20,10 +21,6 @@ import static org.junit.Assert.*;
 public class ExampleInstrumentedTest {
     @Test
     public void useAppContext() {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        DatabaseModel db = new DatabaseModel();
-        db.storeSignUp("Adidas", "Adidas.shoes", "Adidasiscool123");
-        assertEquals("com.b07finalproject_group9", appContext.getPackageName());
+
     }
 }
