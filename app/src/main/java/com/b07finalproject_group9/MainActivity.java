@@ -10,8 +10,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
-        DatabaseModel db = new DatabaseModel();
-        db.storeSignUp("a","b");
+        LoginModel lm = new LoginModel();
+
+        lm.checkExistingShopperUser("NikeJustDoIt");
+        lm.checkExistingShopperUser("elvis");
+        lm.checkExistingShopperUser("johndoe123");
+        lm.checkExistingStoreOwnerUser("johndoe123");
+        lm.checkExistingStoreOwnerUser("NikeJustDoIt");
+
+
+
         setContentView(R.layout.main_activity);
     }
+
 }

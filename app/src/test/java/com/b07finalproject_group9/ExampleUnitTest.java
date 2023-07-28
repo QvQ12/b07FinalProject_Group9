@@ -29,6 +29,6 @@ public class ExampleUnitTest {
         @Test
         public void testMyMethod() {
             DatabaseModel d = new DatabaseModel();
-            d.storeSignUp("a","b");
+            d.storeSignUp("Adf", "milkmonster1", "datgui");
         }
     }
