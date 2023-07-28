@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
         LoginModel lm = new LoginModel();
-
         setContentView(R.layout.main_activity);
     }
 

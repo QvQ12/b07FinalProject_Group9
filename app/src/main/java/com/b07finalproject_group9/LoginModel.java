@@ -37,7 +37,6 @@ public class LoginModel extends DatabaseModel{
             create a new user, -1 otherwise.
          */
         DatabaseReference query = fdb.getReference("Shopper-UserList").child("");
-
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -46,7 +45,7 @@ public class LoginModel extends DatabaseModel{
                     signal[0] = -1;
                 } else{
                     createNewShopperUser(username, password);
-                    signal[0] = 1;
+                    signal[0] = 0;
                 }
             }
             @Override
@@ -67,8 +66,10 @@ public class LoginModel extends DatabaseModel{
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(username) || snapshot.hasChild(storename)) {
                     //Login message to say "username" is already used
+                    signal[0] = -1;
                 } else {
                     createNewStoreOwnerUser(storename, username, password);
+                    signal[0] = 0;
                 }
             }
 
