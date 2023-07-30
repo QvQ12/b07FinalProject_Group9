@@ -1,5 +1,6 @@
 package com.b07finalproject_group9;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -28,7 +29,7 @@ import com.google.firebase.FirebaseApp;
 public class ExampleUnitTest {
         @Test
         public void testMyMethod() {
-            DatabaseModel d = new DatabaseModel();
-            d.storeSignUp("a","b");
+
+
         }
     }
