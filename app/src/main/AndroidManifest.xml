@@ -13,7 +13,7 @@
         android:theme="@style/Theme.B07ProjectLogin"
         tools:targetApi="31">
         <activity
-            android:name="com.b07finalproject_group9.MainActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>

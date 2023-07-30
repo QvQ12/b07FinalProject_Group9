@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.b07finalproject_group9.MainActivity">
+    android:id="@+id/main_login_redirect"
+    tools:context=".MainActivity">
+
 
     <Button
-        android:id="@+id/btnShopperLogin"
+        android:id="@+id/btnOwnerRedirect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ownerlogin"
@@ -17,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnOwnerLogin"
+        android:id="@+id/btnShopperRedirect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/shopperlogin"
@@ -25,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnShopperLogin"
+        app:layout_constraintTop_toBottomOf="@+id/btnOwnerRedirect"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -34,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/app_name"
-        app:layout_constraintBottom_toTopOf="@+id/btnShopperLogin"
+        app:layout_constraintBottom_toTopOf="@+id/btnOwnerRedirect"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
