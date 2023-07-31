@@ -73,12 +73,21 @@ TODO - next meeting 31st July:
 
 July 31st Meeting
 Talked about:
-
+    - general overview of the project.
 Obstacles from the last meeting:
-
+    - linking to firebase (Mainly Orders)
+    - convert activity to fragments
 Completed:
+    - part of the design 
+    - design shopping cart 
+    - Login and sign up models are completed
+    - login and sign up design are completed
 
-TODO - next meeting __ August:
+TODO - next meeting 2nd August:
+    - Link the login and sign up with shopper
+    - convert activity to fragments.
+    - Add products in owner's page and display the products in store. 
+    
 
 
 
