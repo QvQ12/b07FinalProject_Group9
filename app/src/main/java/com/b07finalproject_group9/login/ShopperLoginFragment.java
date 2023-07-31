@@ -26,7 +26,7 @@ public class ShopperLoginFragment extends Fragment {
                     if (success) {
                         Fragment f = new ShopperDashboard();
                         FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-                        ft.replace(R.id.main_login_redirect, f).addToBackStack(null).commit();
+                        ft.replace(R.id.main_login_redirect, f).commit();
                     } else {
                         Toast.makeText(getActivity(), "Login Unsuccessful", Toast.LENGTH_SHORT).show();
                     }
@@ -40,15 +40,25 @@ public class ShopperLoginFragment extends Fragment {
         EditText username_editText = view.findViewById(R.id.shopper_username_editText);
         EditText password_editText = view.findViewById(R.id.shopper_password_editText);
         Button btnLogin = view.findViewById(R.id.shopper_login_button);
-        Button redirectSignUp = view.findViewById(R.id.shopper_redirect_signup);
+        Button btnRedirectSignUp = view.findViewById(R.id.shopper_redirect_signup);
 
 
         //Do Login On Clicking Login
         btnLogin.setOnClickListener(new View.OnClickListener(){
+            @Override
             public void onClick(View view){
                 String username = username_editText.getText().toString();
                 String password = password_editText.getText().toString();
                 performShopperLogin(username, password);
+            }
+        });
+
+        btnRedirectSignUp.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Fragment f = new ShopperSignUpFragment();
+                FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+                ft.replace(R.id.main_login_redirect, f).commit();
             }
         });
 

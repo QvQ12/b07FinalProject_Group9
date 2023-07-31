@@ -34,7 +34,7 @@ public class LoginModel extends DatabaseModel{
         DatabaseReference db = fdb.getReference("Shopper-UserList");
         db.child(username).setValue(user.createMap());
     }
-    public CompletableFuture<Boolean> signUpShopperUser(String username, String password, int[] signal){
+    public CompletableFuture<Boolean> signUpShopperUser(String username, String password){
         /*  Creates a new SHOPPER user iff there is NOT an existing SHOPPER user
             with the same username, returns a completeablefuture which gives true if completed
             or false otherwise.
