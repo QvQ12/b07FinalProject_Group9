@@ -1,14 +1,18 @@
 package com.b07finalproject_group9;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.b07finalproject_group9.objects.ShopperUser;
 import com.b07finalproject_group9.objects.StoreOwnerUser;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.CompletableFuture;
@@ -30,56 +34,78 @@ public class LoginModel extends DatabaseModel{
         DatabaseReference db = fdb.getReference("Shopper-UserList");
         db.child(username).setValue(user.createMap());
     }
-
-    public void signUpShopperUser(String username, String password, int[] signal){
+    public CompletableFuture<Boolean> signUpShopperUser(String username, String password, int[] signal){
         /*  Creates a new SHOPPER user iff there is NOT an existing SHOPPER user
-            with the same username, changes signal[0] to 0 if it does successfully
-            create a new user, -1 otherwise.
+            with the same username, returns a completeablefuture which gives true if completed
+            or false otherwise.
          */
+        CompletableFuture<Boolean> completableFuture = new CompletableFuture<>();
         DatabaseReference query = fdb.getReference("Shopper-UserList").child("");
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.hasChild(username)){
-                    //Login message to say "username" is already used
-                    signal[0] = -1;
+                    completableFuture.complete(false);
                 } else{
                     createNewShopperUser(username, password);
-                    signal[0] = 0;
+                    completableFuture.complete(true);
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                    //Error message to say error occured
+                completableFuture.complete(false);
             }
         });
-
+        return completableFuture;
     }
-    public void signUpStoreOwner(String storename, String username, String password, int[] signal) {
+    public CompletableFuture<Boolean> signUpStoreOwner(String storename, String username, String password) {
         /*  Creates a new STOREOWNER user iff there is NOT an existing STOREOWNER user
-            with the same username OR storename, changes signal[0] to 0 if it does successfully
-            create a new user, -1 otherwise.
+            with the same username OR storename, returns a completeablefuture which returns
+            true if successful false otherwise.
          */
         DatabaseReference query = fdb.getReference("StoreOwner-UserList");
+        CompletableFuture<Boolean> completableFuture = new CompletableFuture<>();
+
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(username) || snapshot.hasChild(storename)) {
-                    //Login message to say "username" is already used
-                    signal[0] = -1;
+                    completableFuture.complete(false);
+
                 } else {
                     createNewStoreOwnerUser(storename, username, password);
-                    signal[0] = 0;
+                    completableFuture.complete(true);
+
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                //Error message to say error occured
+                completableFuture.complete(false);
             }
         });
+        return completableFuture;
     }
 
+    public CompletableFuture<Boolean> loginShopper(String username, String password) {
+        CompletableFuture<Boolean> completableFuture = new CompletableFuture<>();
+        DatabaseReference query = FirebaseDatabase.getInstance().getReference("Shopper-UserList/");
+
+        query.child(username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                boolean result = false;
+                if (task.isSuccessful()) {
+                    DataSnapshot ds = task.getResult();
+                    String passwordFromDb = String.valueOf(ds.child("password").getValue());
+                    result = passwordFromDb.equals(password);
+                }
+                completableFuture.complete(result);
+            }
+        });
+
+        return completableFuture;
+    }
 
 
 }

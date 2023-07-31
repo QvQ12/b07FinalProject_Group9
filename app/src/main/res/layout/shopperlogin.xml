@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="com.example.b07projectlogin.ShopperLoginFragment">
+    tools:context=".login.ShopperLoginFragment">
 
     <TextView
         android:id="@+id/shopper_login"
@@ -53,7 +53,7 @@
         app:layout_constraintTop_toTopOf="@+id/shopper_username_textView" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/shopper_password_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -80,7 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="new_user?"
+        android:text="new user?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

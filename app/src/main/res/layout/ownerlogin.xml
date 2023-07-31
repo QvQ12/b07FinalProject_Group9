@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.b07projectlogin.ShopperLoginFragment">
+    tools:context=".login.ShopperLoginFragment">
 
     <TextView
         android:id="@+id/owner_login"
@@ -52,7 +52,7 @@
         app:layout_constraintTop_toTopOf="@+id/owner_username_textView" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/shopper_password_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
