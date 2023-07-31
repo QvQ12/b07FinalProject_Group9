@@ -53,7 +53,7 @@
         app:layout_constraintTop_toTopOf="@+id/shopper_username_textView" />
 
     <EditText
-        android:id="@+id/shopper_password_editText"
+        android:id="@+id/owner_password_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"

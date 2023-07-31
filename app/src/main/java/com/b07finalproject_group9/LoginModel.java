@@ -30,7 +30,8 @@ public class LoginModel extends DatabaseModel{
     private void createNewShopperUser(String username, String password){
         /* Writes a new Shopper User to the database
          */
-        ShopperUser user = new ShopperUser(username, password,"TODO make a function that creates");
+        ShopperUser user = new ShopperUser(username,
+                password,"TODO make a function that creates");
         DatabaseReference db = fdb.getReference("Shopper-UserList");
         db.child(username).setValue(user.createMap());
     }
@@ -58,7 +59,8 @@ public class LoginModel extends DatabaseModel{
         });
         return completableFuture;
     }
-    public CompletableFuture<Boolean> signUpStoreOwner(String storename, String username, String password) {
+    public CompletableFuture<Boolean> signUpStoreOwner(String storename,
+                                                       String username, String password) {
         /*  Creates a new STOREOWNER user iff there is NOT an existing STOREOWNER user
             with the same username OR storename, returns a completeablefuture which returns
             true if successful false otherwise.
@@ -89,7 +91,29 @@ public class LoginModel extends DatabaseModel{
 
     public CompletableFuture<Boolean> loginShopper(String username, String password) {
         CompletableFuture<Boolean> completableFuture = new CompletableFuture<>();
-        DatabaseReference query = FirebaseDatabase.getInstance().getReference("Shopper-UserList/");
+        DatabaseReference query = (FirebaseDatabase.getInstance().
+                getReference("Shopper-UserList/"));
+
+        query.child(username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                boolean result = false;
+                if (task.isSuccessful()) {
+                    DataSnapshot ds = task.getResult();
+                    String passwordFromDb = String.valueOf(ds.child("password").getValue());
+                    result = passwordFromDb.equals(password);
+                }
+                completableFuture.complete(result);
+            }
+        });
+
+        return completableFuture;
+    }
+
+    public CompletableFuture<Boolean> loginOwner(String username, String password) {
+        CompletableFuture<Boolean> completableFuture = new CompletableFuture<>();
+        DatabaseReference query = (FirebaseDatabase.getInstance().
+                getReference("StoreOwner-UserList/"));
 
         query.child(username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override

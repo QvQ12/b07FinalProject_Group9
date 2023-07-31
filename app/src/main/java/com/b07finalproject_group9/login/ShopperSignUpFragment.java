@@ -18,7 +18,7 @@ import com.tempfragments.ShopperDashboard;
 
 public class ShopperSignUpFragment extends Fragment {
 
-    private void performShopperLogin(String username, String password){
+    private void performShopperSignUp(String username, String password){
         LoginModel lm = new LoginModel();
         lm.signUpShopperUser(username, password)
                 .thenAccept(success -> {
@@ -27,7 +27,8 @@ public class ShopperSignUpFragment extends Fragment {
                         FragmentTransaction ft = getParentFragmentManager().beginTransaction();
                         ft.replace(R.id.main_login_redirect, f).commit();
                     } else {
-                        Toast.makeText(getActivity(), "Signup Unsuccessful", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Signup Unsuccessful",
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -38,13 +39,13 @@ public class ShopperSignUpFragment extends Fragment {
         View view = inflater.inflate(R.layout.shoppersignup, container, false);
         Button btnSignUp = view.findViewById(R.id.shopper_signup_button);
         EditText username_editText = view.findViewById(R.id.shopper_username_editText);
-        EditText password_editText = view.findViewById(R.id.shopper_password_editText);
+        EditText password_editText = view.findViewById(R.id.owner_password_editText);
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String username = username_editText.getText().toString();
                 String password = password_editText.getText().toString();
-                performShopperLogin(username, password);
+                performShopperSignUp(username, password);
             }
         });
 

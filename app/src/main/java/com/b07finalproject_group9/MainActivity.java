@@ -9,8 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.b07finalproject_group9.login.OwnerLoginFragment;
 import com.b07finalproject_group9.login.ShopperLoginFragment;
 import com.google.firebase.FirebaseApp;
+
+import java.security.acl.Owner;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
         btn_ownerlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Fragment f = new OwnerLoginFragment();
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.main_login_redirect, f).commit();
             }
         });
 
