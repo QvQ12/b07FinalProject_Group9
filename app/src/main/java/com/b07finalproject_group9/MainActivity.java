@@ -14,6 +14,9 @@ import com.b07finalproject_group9.login.ShopperLoginFragment;
 import com.google.firebase.FirebaseApp;
 
 import java.security.acl.Owner;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         Button btn_shopperlogin;
         btn_ownerlogin = findViewById(R.id.btnOwnerRedirect);
         btn_shopperlogin = findViewById(R.id.btnShopperRedirect);
-
         btn_ownerlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

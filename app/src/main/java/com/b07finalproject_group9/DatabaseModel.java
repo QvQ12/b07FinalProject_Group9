@@ -7,9 +7,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.List;
+
 
 public class DatabaseModel {
     private String ACTIVITY_KEY = "https://b07finalprojectgroup9-42c62-default-rtdb.firebaseio.com/";
-    FirebaseDatabase fdb = FirebaseDatabase.getInstance(ACTIVITY_KEY);
+    protected FirebaseDatabase fdb = FirebaseDatabase.getInstance(ACTIVITY_KEY);
 
 }
