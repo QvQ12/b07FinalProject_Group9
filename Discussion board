@@ -48,13 +48,13 @@ Completed:
     - setup firebase (by Miko and Alvin)
 TODO - next meeting 28th July: 
     - design of the shopper's page (assigned to Raymond)
-    - design of the owners's page (assigned to Jenna)
+    - design of the owners' page (assigned to Jenna)
     - working further into the design of the login page (assigned to Cristal) and
     - Connecting the firebase and other features with the login page (Assigned to Miko and Alvin)
 
 July 28th Meeting
 Talked about:
-    - general outline to the project like linking and getting the orders and products to connect.
+    - general project outline like linking and getting the orders and products to connect.
     - further discussion on design for the owner and shopper's page.
 Obstacle from the last meeting:
     - design conflicts.
@@ -64,29 +64,32 @@ Completed:
     - outline for owner's page including the order page and add page (by Jenna)
     - outline for shopper's page including the main page and linked to cart and ready to pick up (by Raymond)
     - added more features to the login pages (by Cristal)
-    - way to write and reading to firebase, structure of data to the firebase (by Miko and Alvin)
+    - way to write and read to firebase, the structure of data to the firebase (by Miko and Alvin)
 TODO - next meeting 31st July:
     - Work on the carts and read to pickup pages  of the shopper's page (assigned to Raymond)
-    - Work on the adding to products and ordering pages of the owners's page (assigned to Jenna)
-    - Connecting the owner's and shopper's pages from login page (assigned to Cristal) and
+    - Work on adding to products and ordering pages of the owners' page (assigned to Jenna)
+    - Connecting the owner's and shopper's pages from the login page (assigned to Cristal) and
     - Linking the login pages and working further on the structure of the firebase (Assigned to Miko and Alvin)
 
 July 31st Meeting
 Talked about:
-    - general overview of the project.
+    - a general overview of the project.
+    - explained how the ordering of items should work
 Obstacles from the last meeting:
     - linking to firebase (Mainly Orders)
     - convert activity to fragments
 Completed:
-    - part of the design 
-    - design shopping cart 
-    - Login and sign up models are completed
-    - login and sign up design are completed
-
+    - part of the design of the owners' page (by Jenna)
+    - part of the design of the shopper's page (by Raymond)
+    - Log-in and sign-up models are completed (by Miko)
+    - log-in and sign-up design are completed (by Miko and Cristal)
+    - adding the structure of the order list (by Alvin)
 TODO - next meeting 2nd August:
-    - Link the login and sign up with shopper
-    - convert activity to fragments.
-    - Add products in owner's page and display the products in store. 
+    - Link the login and sign up with the shopper and owners' page. (assigned to everyone) 
+    - convert activity to fragments. (by Cristal and Miko)
+    - Add products from the owner's page and (assigned to Jenna)
+    - display the products on the shopper's page. (assigned to Raymond)
+    - working on the further on orders. (assign to Alvin)
     
 
 
