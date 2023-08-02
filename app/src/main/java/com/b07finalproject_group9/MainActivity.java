@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import com.b07finalproject_group9.login.OwnerLoginFragment;
 import com.b07finalproject_group9.login.ShopperLoginFragment;
+import com.b07finalproject_group9.owner.StoreOwnerInventoryModel;
 import com.google.firebase.FirebaseApp;
 
 import java.security.acl.Owner;
@@ -22,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         FirebaseApp.initializeApp(this);
+
+
+
         Button btn_ownerlogin;
         Button btn_shopperlogin;
         btn_ownerlogin = findViewById(R.id.btnOwnerRedirect);

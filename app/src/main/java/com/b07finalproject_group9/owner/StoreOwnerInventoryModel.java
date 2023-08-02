@@ -9,7 +9,9 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -45,46 +47,32 @@ public class StoreOwnerInventoryModel extends StoreOwnerModel{
 
     }
 
-    public CompletableFuture<List<String>> getProductInventory(String store_username){
-        /* Returns a CompleteableFuture holding a List of all products in store_username */
+    public CompletableFuture<ArrayList<String>> getProductInventory(String store_username){
+        /* Returns a CompleteableFuture holding an ArrayList of all products in store_username */
         DatabaseReference db = fdb.getReference("StoreOwner-UserList/" + store_username
-                + "/Inventory");
-        CompletableFuture<List<String>> result;
+                + "/Inventory/");
+        CompletableFuture<ArrayList<String>> result = new CompletableFuture<>();
 
 
-        db.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Log.i("Check", "onChildAdded:" + snapshot.getKey());
-            }
+        db.addValueEventListener(new ValueEventListener() {
+            ArrayList<String> KEYS = new ArrayList<>();
 
             @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Log.i("Check", "onChildChanged:" + snapshot.getKey());
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                Log.i("Check", "onChildRemoved:" + snapshot.getKey());
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Log.i("Check", "onChildMoved:" + snapshot.getKey());
+            public void onDataChange(DataSnapshot snapshot){
+                for(DataSnapshot childSnapshot : snapshot.getChildren()){
+                    String key = childSnapshot.getKey();
+                    KEYS.add(key);
+                }
+                result.complete(KEYS);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.i("Check", "onCancelled", error.toException());
-
+                //Throw error message to log
             }
         });
 
-
-
-        return null;
-
-
+        return result;
     }
 
 
