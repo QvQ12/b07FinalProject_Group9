@@ -5,20 +5,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import com.b07finalproject_group9.login.OwnerLoginFragment;
+import com.b07finalproject_group9.login.OwnerSignUpFragment;
 import com.b07finalproject_group9.login.ShopperLoginFragment;
-import com.b07finalproject_group9.owner.StoreOwnerInventoryModel;
+import com.b07finalproject_group9.login.ShopperSignUpFragment;
 import com.google.firebase.FirebaseApp;
 
-import java.security.acl.Owner;
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +32,12 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn_ownerlogin;
         Button btn_shopperlogin;
-        btn_ownerlogin = findViewById(R.id.btnOwnerRedirect);
-        btn_shopperlogin = findViewById(R.id.btnShopperRedirect);
+        Button btn_ownersignup;
+        Button btn_shoppersignup;
+        btn_ownerlogin = findViewById(R.id.ownerlogin_button);
+        btn_shopperlogin = findViewById(R.id.shopperlogin_button);
+        btn_ownersignup = findViewById(R.id.ownersignup_button);
+        btn_shoppersignup = findViewById(R.id.shoppersignup_button);
 
         btn_ownerlogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +52,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Fragment f = new ShopperLoginFragment();
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.main_login_redirect, f).commit();
+            }
+        });
+
+        btn_shoppersignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment f = new ShopperSignUpFragment();
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.main_login_redirect, f).commit();
+            }
+        });
+
+        btn_ownersignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment f = new OwnerSignUpFragment();
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.main_login_redirect, f).commit();
             }
