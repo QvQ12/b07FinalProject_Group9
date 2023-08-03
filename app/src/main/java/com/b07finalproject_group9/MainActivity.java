@@ -1,21 +1,32 @@
 package com.b07finalproject_group9;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.b07finalproject_group9.databinding.ActivityMainBinding;
+import com.b07finalproject_group9.databinding.MainActivityBinding;
 import com.b07finalproject_group9.login.OwnerLoginFragment;
 import com.b07finalproject_group9.login.OwnerSignUpFragment;
 import com.b07finalproject_group9.login.ShopperLoginFragment;
 import com.b07finalproject_group9.login.ShopperSignUpFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.FirebaseApp;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static MainActivityBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
 //        sm.getProductInventory("test").thenAccept(res ->
 //                sm.getSpecificProduct(res.get(0), "test").thenAccept(
 //                        mres-> Log.i("TEST", mres.toString())));
+
+
+
 
 
 
