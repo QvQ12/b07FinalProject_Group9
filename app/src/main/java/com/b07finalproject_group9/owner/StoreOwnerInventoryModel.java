@@ -75,5 +75,34 @@ public class StoreOwnerInventoryModel extends StoreOwnerModel{
         return result;
     }
 
+    public CompletableFuture<HashMap<String, String>> getSpecificProduct(String productID,
+                                                                         String store_name){
+        /* Returns a CompletableFuture holding a Hashmap with the details of a product.
+         */
+        CompletableFuture<HashMap<String,String>> result = new CompletableFuture<>();
+        DatabaseReference db = fdb.getReference("StoreOwner-UserList/" + store_name +
+                                                    "/Inventory/" + productID);
+        db.addValueEventListener(new ValueEventListener() {
+            HashMap<String, String> product = new HashMap<>();
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for(DataSnapshot childSnapshot : snapshot.getChildren()){
+                    String key = childSnapshot.getKey();
+                    product.put(key, childSnapshot.getValue().toString());
+                }
+                result.complete(product);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                //Throw error message
+                result.complete(product);
+            }
+        });
+
+        return result;
+    }
+
 
 }

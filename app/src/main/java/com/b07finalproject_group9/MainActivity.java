@@ -15,6 +15,7 @@ import com.b07finalproject_group9.owner.StoreOwnerInventoryModel;
 import com.google.firebase.FirebaseApp;
 
 import java.security.acl.Owner;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +24,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         FirebaseApp.initializeApp(this);
+
+//        quick test
+//        StoreOwnerInventoryModel sm = new StoreOwnerInventoryModel();
+//        sm.getProductInventory("test").thenAccept(res ->
+//                sm.getSpecificProduct(res.get(0), "test").thenAccept(
+//                        mres-> Log.i("TEST", mres.toString())));
 
 
 
