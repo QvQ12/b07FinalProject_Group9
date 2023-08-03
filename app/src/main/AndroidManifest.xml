@@ -13,11 +13,11 @@
         android:theme="@style/Theme.B07ProjectLogin"
         tools:targetApi="31">
         <activity
-            android:name="MainActivity"
+            android:name="com.example.owner.MainActivity"
             android:exported="true" />
         <activity android:name="com.example.owner.ui.dashboard.AddNewProduct" />
         <activity
-            android:name="com.example.owner.MainActivity"
+            android:name="com.b07finalproject_group9.MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
