@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.b07finalproject_group9.LoginModel;
 import com.b07finalproject_group9.MainActivity;
 import com.b07finalproject_group9.R;
 import com.tempfragments.ShopperDashboard;
@@ -110,8 +109,6 @@ public class ShopperLoginFragment extends Fragment {
         });
 
 
-
-
         //Do Login On Clicking Login
         btnLogin.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -121,10 +118,6 @@ public class ShopperLoginFragment extends Fragment {
                 performShopperLogin(username, password);
             }
         });
-
-
-
-
 
         return view;
     }

@@ -7,6 +7,19 @@
     android:background="@color/white"
     tools:context=".login.OwnerSignUpFragment">
 
+    <EditText
+        android:id="@+id/storename_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/enter_your_storename"
+        android:inputType="text"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/storename_textView"
+        app:layout_constraintStart_toEndOf="@+id/storename_textView"
+        app:layout_constraintTop_toTopOf="@+id/storename_textView"
+        app:layout_constraintVertical_bias="0.571" />
+
     <TextView
         android:id="@+id/owner_signup"
         android:layout_width="wrap_content"
@@ -23,11 +36,23 @@
         android:id="@+id/owner_username_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="36dp"
         android:text="@string/username"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.007"
+        app:layout_constraintStart_toStartOf="@+id/storename_textView"
+        app:layout_constraintTop_toBottomOf="@+id/storename_textView" />
+
+    <TextView
+        android:id="@+id/storename_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="@string/storename"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.206"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/owner_signup" />
 

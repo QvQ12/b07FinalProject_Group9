@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">B07Project Mall</string>
     <string name="shopperlogin">Shopper Login</string>
+    <string name="storename">storename:</string>
     <string name="username">username:</string>
     <string name="password">password:</string>
     <string name="login">Login</string>
@@ -10,6 +11,7 @@
     <string name="ownersignup">Owner Signup</string>
     <string name="return_to_main">Menu</string>
     <string name="welcome">Welcome</string>
+    <string name="enter_your_storename">enter your storename</string>
     <string name="enter_your_password">enter your password</string>
     <string name="enter_your_username">enter your username</string>
     <string-array name="login_signup_choice">

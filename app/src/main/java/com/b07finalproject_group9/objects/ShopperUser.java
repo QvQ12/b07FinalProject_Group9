@@ -6,12 +6,10 @@ import java.util.Map;
 public class ShopperUser {
     String username;
     String password;
-    String userOrderID;
 
-    public ShopperUser(String username, String password, String userOrderID){
+    public ShopperUser(String username, String password){
         this.username = username;
         this.password = password;
-        this.userOrderID = userOrderID;
         //The idea is to link the userOrderID with a list of Orders,
 
     }
@@ -20,7 +18,6 @@ public class ShopperUser {
         Map<String, String> storeInfo = new HashMap<>();
         storeInfo.put("username", username);
         storeInfo.put("password", password);
-        storeInfo.put("userOrderID", userOrderID);
         return storeInfo;
     }
 

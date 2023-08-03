@@ -1,10 +1,11 @@
-package com.b07finalproject_group9;
+package com.b07finalproject_group9.login;
 
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.b07finalproject_group9.DatabaseModel;
 import com.b07finalproject_group9.objects.ShopperUser;
 import com.b07finalproject_group9.objects.StoreOwnerUser;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,12 +18,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.CompletableFuture;
 
-public class LoginModel extends DatabaseModel{
+public class LoginModel extends DatabaseModel {
 
     private void createNewStoreOwnerUser(String storename, String username, String password){
         /* Writes a new StoreOwner User to the database
          */
-        StoreOwnerUser user = new StoreOwnerUser(storename, username, password, "TODO make a function that creates this");
+        StoreOwnerUser user = new StoreOwnerUser(storename, username, password);
         DatabaseReference db = fdb.getReference("StoreOwner-UserList");
         db.child(username).setValue(user.createMap());
     }
@@ -31,7 +32,7 @@ public class LoginModel extends DatabaseModel{
         /* Writes a new Shopper User to the database
          */
         ShopperUser user = new ShopperUser(username,
-                password,"TODO make a function that creates");
+                password);
         DatabaseReference db = fdb.getReference("Shopper-UserList");
         db.child(username).setValue(user.createMap());
     }

@@ -15,13 +15,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.b07finalproject_group9.LoginModel;
 import com.b07finalproject_group9.MainActivity;
 import com.b07finalproject_group9.R;
 import com.tempfragments.ShopperDashboard;
 
 public class OwnerSignUpFragment extends Fragment {
-    private void setSpinner(View view,int i){
+    private void setSpinner(View view, int i){
         Spinner spinner;
         spinner = (Spinner) view.findViewById(R.id.spinner);
         if(spinner!=null)spinner.setSelection(i);
@@ -50,9 +49,9 @@ public class OwnerSignUpFragment extends Fragment {
         FragmentTransaction ft = getParentFragmentManager().beginTransaction();
         ft.replace(R.id.main_login_redirect, f).commit();
     }
-    private void performOwnerSignUp(String username, String password){
+    private void performOwnerSignUp(String storename, String username, String password){
         LoginModel lm = new LoginModel();
-        lm.signUpStoreOwner("add another edittext", username, password)
+        lm.signUpStoreOwner(storename, username, password)
                 .thenAccept(success -> {
                     if (success) {
                         Fragment f = new ShopperDashboard();
@@ -71,6 +70,7 @@ public class OwnerSignUpFragment extends Fragment {
         View view = inflater.inflate(R.layout.ownersignup, container, false);
         setSpinner(view,3);
         Button btnSignUp = view.findViewById(R.id.owner_signup_button);
+        EditText storename_editText = view.findViewById(R.id.storename_editText);
         EditText username_editText = view.findViewById(R.id.username_editText);
         EditText password_editText = view.findViewById(R.id.password_editText);
         Spinner spinner = view.findViewById(R.id.spinner);
@@ -113,9 +113,10 @@ public class OwnerSignUpFragment extends Fragment {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String storename = storename_editText.getText().toString();
                 String username = username_editText.getText().toString();
                 String password = password_editText.getText().toString();
-                performOwnerSignUp(username, password);
+                performOwnerSignUp(storename, username, password);
             }
         });
 

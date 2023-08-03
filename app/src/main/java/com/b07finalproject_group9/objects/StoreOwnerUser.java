@@ -10,11 +10,10 @@ public class StoreOwnerUser {
     String inventoryID;
 
     public StoreOwnerUser(String storename, String username,
-                          String password, String inventoryID){
+                          String password){
         this.storename = storename;
         this.username = username;
         this.password = password;
-        this.inventoryID = inventoryID;
     }
 
     public Map<String,String> createMap(){

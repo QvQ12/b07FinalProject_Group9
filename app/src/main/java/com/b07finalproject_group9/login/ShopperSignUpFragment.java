@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.b07finalproject_group9.LoginModel;
 import com.b07finalproject_group9.MainActivity;
 import com.b07finalproject_group9.R;
 import com.tempfragments.ShopperDashboard;
