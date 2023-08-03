@@ -90,7 +90,20 @@ TODO - next meeting 2nd August:
     - Add products from the owner's page and (assigned to Jenna)
     - display the products on the shopper's page. (assigned to Raymond)
     - working on the further on orders. (assign to Alvin)
-    
+August 2nd Meeting:
+Talked about:
+    - how to check for orders and showing them in owners and shoppers
+    - problems with linking and merging codes
+Obstacles from the last meeting:
+    - Linking the owner's page with the login.
+    - Order structure (how to access and make an order) 
+Completed:
+    - Converted activities to fragments (by Cristal)
+    - Completed the functionality of login and sign up page (By Cristal and Miko) 
+    - Design of dashboard of Owner's page, Adding products and Oder's page (By Jenna)    
+TODO - next meeting 5th August:
+    - linking the firebase with inventory 
+    - linking orders between orders and owner and shopper
 
 
 
