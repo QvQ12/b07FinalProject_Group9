@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.b07finalproject_group9.DatabaseModel;
+import com.b07finalproject_group9.MainActivity;
 import com.b07finalproject_group9.R;
 import com.b07finalproject_group9.databinding.ActivityMainBinding;
 import com.b07finalproject_group9.databinding.FragmentHomeBinding;
@@ -43,24 +44,8 @@ public class HomeFragment extends Fragment {
 
             DatabaseReference query = FirebaseDatabase.getInstance().getReference("Shopper-UserList");
 
-            query.child(DatabaseModel.currentOwner.getName()).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        String user = dataSnapshot.child("username").getValue(String.class);
-                        textView.setText(user);
-                    } else {
-                    // Data doesn't exist or structure is not as expected
-                    Log.d("FirebaseData", "DataSnapshot does not exist or is not structured as expected");
-                }
-                }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    // Handle database error here
-                    Log.e("FirebaseError", "Database error: " + error.getMessage());
-                }
-            });
+            textView.setText(MainActivity.currUser.getPassword());
 
             return root;
         }

@@ -1,32 +1,27 @@
 package com.b07finalproject_group9;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Spinner;
 
-import com.b07finalproject_group9.databinding.ActivityMainBinding;
 import com.b07finalproject_group9.databinding.MainActivityBinding;
 import com.b07finalproject_group9.login.OwnerLoginFragment;
 import com.b07finalproject_group9.login.OwnerSignUpFragment;
 import com.b07finalproject_group9.login.ShopperLoginFragment;
 import com.b07finalproject_group9.login.ShopperSignUpFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.b07finalproject_group9.objects.User;
 import com.google.firebase.FirebaseApp;
 
 public class MainActivity extends AppCompatActivity {
 
     public static MainActivityBinding binding;
+    public static User currUser; //Use this to track the current user
+
     public void switchToOwner(){
         Intent intent = new Intent(this, com.example.owner.MainActivity.class);
         startActivity(intent);
@@ -37,9 +32,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         FirebaseApp.initializeApp(this);
-
-
-
 
         Button btn_ownerlogin;
         Button btn_shopperlogin;

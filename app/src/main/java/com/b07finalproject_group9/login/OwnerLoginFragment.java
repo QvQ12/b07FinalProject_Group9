@@ -16,10 +16,26 @@ import android.widget.Toast;
 
 import com.b07finalproject_group9.MainActivity;
 import com.b07finalproject_group9.R;
+import com.b07finalproject_group9.objects.User;
 import com.b07finalproject_group9.owner.OwnerDashboardFragment;
 
 public class OwnerLoginFragment extends Fragment {
 
+    private void performOwnerLogin(String username, String password){
+        LoginModel lm = new LoginModel();
+        lm.loginOwner(username, password)
+                .thenAccept(success -> {
+                    if (success) {
+                        MainActivity.currUser = new User(username);
+                        Fragment f = new OwnerDashboardFragment();
+                        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+                        ft.replace(R.id.main_login_redirect, f).commit();
+                    } else {
+                        Toast.makeText(getActivity(), "Login Unsuccessful",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
 
     private void setSpinner(View view,int i){
         Spinner spinner;
@@ -51,20 +67,6 @@ public class OwnerLoginFragment extends Fragment {
         ft.replace(R.id.main_login_redirect, f).commit();
     }
 
-    private void performOwnerLogin(String username, String password){
-        LoginModel lm = new LoginModel();
-        lm.loginOwner(username, password)
-                .thenAccept(success -> {
-                    if (success) {
-                        Fragment f = new OwnerDashboardFragment();
-                        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-                        ft.replace(R.id.main_login_redirect, f).commit();
-                    } else {
-                        Toast.makeText(getActivity(), "Login Unsuccessful",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

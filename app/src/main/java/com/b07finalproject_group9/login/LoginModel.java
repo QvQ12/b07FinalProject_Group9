@@ -129,7 +129,7 @@ public class LoginModel extends DatabaseModel {
             }
         });
         StoreOwnerUser thisUser = new StoreOwnerUser("", username, password);
-        DatabaseModel.currentOwner = thisUser;
+//        DatabaseModel.currentOwner = thisUser;
 
         return completableFuture;
     }

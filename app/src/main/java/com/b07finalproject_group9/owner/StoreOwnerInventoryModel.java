@@ -17,9 +17,10 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class StoreOwnerInventoryModel extends StoreOwnerModel{
-    public void addProductInventory( String store_username, String product_name,
-                                     double price, int quantity){
-        /* Writes a new product to StoreOwner-UserList/store_username/Inventory */
+    public String addProductInventory( String store_username, String product_name,
+                                     double price, int quantity, String description){
+        /* Writes a new product to StoreOwner-UserList/store_username/Inventory then
+         * returns a productID*/
 
         DatabaseReference db = fdb.getReference("StoreOwner-UserList/"
                 + store_username +"/Inventory");
@@ -29,7 +30,11 @@ public class StoreOwnerInventoryModel extends StoreOwnerModel{
         productInfo.put("product_name", product_name);
         productInfo.put("price", price);
         productInfo.put("quantity", quantity);
+
+        productInfo.put("description", description);
         db.child(productID).setValue(productInfo);
+
+        return productID;
     }
 
 

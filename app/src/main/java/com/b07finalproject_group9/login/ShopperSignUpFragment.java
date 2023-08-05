@@ -17,9 +17,26 @@ import android.widget.Toast;
 
 import com.b07finalproject_group9.MainActivity;
 import com.b07finalproject_group9.R;
+import com.b07finalproject_group9.objects.User;
 import com.tempfragments.ShopperDashboard;
 
 public class ShopperSignUpFragment extends Fragment {
+
+    private void performShopperSignUp(String username, String password){
+        LoginModel lm = new LoginModel();
+        lm.signUpShopperUser(username, password)
+                .thenAccept(success -> {
+                    if (success) {
+                        MainActivity.currUser = new User(username);
+                        Fragment f = new ShopperDashboard();
+                        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+                        ft.replace(R.id.main_login_redirect, f).commit();
+                    } else {
+                        Toast.makeText(getActivity(), "Signup Unsuccessful",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
     private void setSpinner(View view,int i){
         Spinner spinner;
         spinner = (Spinner) view.findViewById(R.id.spinner);
@@ -49,20 +66,7 @@ public class ShopperSignUpFragment extends Fragment {
         FragmentTransaction ft = getParentFragmentManager().beginTransaction();
         ft.replace(R.id.main_login_redirect, f).commit();
     }
-    private void performShopperSignUp(String username, String password){
-        LoginModel lm = new LoginModel();
-        lm.signUpShopperUser(username, password)
-                .thenAccept(success -> {
-                    if (success) {
-                        Fragment f = new ShopperDashboard();
-                        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-                        ft.replace(R.id.main_login_redirect, f).commit();
-                    } else {
-                        Toast.makeText(getActivity(), "Signup Unsuccessful",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
