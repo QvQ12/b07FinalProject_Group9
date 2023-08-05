@@ -13,17 +13,16 @@ import android.widget.EditText;
 
 import com.b07finalproject_group9.R;
 
-public class AddNewProduct extends Fragment {
+public class AddExistingProduct extends Fragment {
 
     Button confirmAdd;
     private EditText name, quantity, price, description;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_add_new_product, container, false);
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_add_existing_product, container, false);
         confirmAdd = view.findViewById(R.id.confirmAdd);
 
         confirmAdd.setOnClickListener(new View.OnClickListener() {
@@ -31,8 +30,8 @@ public class AddNewProduct extends Fragment {
             public void onClick(View view) {
                 //once click confirm add, should
                 // 1. check if the product already exists
-                // 2. if yes, redirect to add_existing_product
-                // 3. if not, add every info to firebase
+                // 2. if yes, add quantity to firebase
+                // 3. if not, redirect to add_new_product
             }
         });
         // Inflate the layout for this fragment

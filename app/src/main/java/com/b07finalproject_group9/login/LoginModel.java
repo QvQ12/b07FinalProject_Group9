@@ -128,6 +128,8 @@ public class LoginModel extends DatabaseModel {
                 completableFuture.complete(result);
             }
         });
+        StoreOwnerUser thisUser = new StoreOwnerUser("", username, password);
+        DatabaseModel.currentOwner = thisUser;
 
         return completableFuture;
     }

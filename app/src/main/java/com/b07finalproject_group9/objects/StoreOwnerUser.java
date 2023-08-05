@@ -7,10 +7,8 @@ public class StoreOwnerUser {
     String username;
     String password;
     String storename;
+    String inventoryID;
 
-    public StoreOwnerUser(String username){
-        this.username = username;
-    }
     public StoreOwnerUser(String storename, String username,
                           String password){
         this.storename = storename;
@@ -18,11 +16,17 @@ public class StoreOwnerUser {
         this.password = password;
     }
 
+    public String getName()
+    {
+        return this.username;
+    }
+
     public Map<String,String> createMap(){
         Map<String, String> storeInfo = new HashMap<>();
         storeInfo.put("username", username);
         storeInfo.put("password", password);
         storeInfo.put("storename", storename);
+        storeInfo.put("inventoryID", inventoryID);
         return storeInfo;
     }
 

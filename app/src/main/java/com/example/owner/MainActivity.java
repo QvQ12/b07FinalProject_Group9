@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.b07finalproject_group9.databinding.ActivityMainBinding;
+import com.b07finalproject_group9.objects.ShopperUser;
+import com.b07finalproject_group9.objects.StoreOwnerUser;
 import com.example.owner.ui.dashboard.DashboardFragment;
 import com.example.owner.ui.home.HomeFragment;
 import com.example.owner.ui.notifications.NotificationsFragment;
@@ -23,12 +25,19 @@ import com.google.firebase.FirebaseApp;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
     private ActivityMainBinding binding;
     BottomNavigationView bot_nav_view;
 
     HomeFragment homeFragment = new HomeFragment();
     DashboardFragment dashboardFragment = new DashboardFragment();
     NotificationsFragment notificationsFragment = new NotificationsFragment();
+
+
+    //use these to get info on shoppers and storeowners
+    public static StoreOwnerUser currStoreOwner;
+    public static ShopperUser currShopper;
 
 
     @Override

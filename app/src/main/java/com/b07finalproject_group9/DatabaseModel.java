@@ -9,6 +9,8 @@ import com.google.firebase.database.ValueEventListener;
 
 
 public class DatabaseModel {
+
+    public static StoreOwnerUser currentOwner;
     private String ACTIVITY_KEY = "https://b07finalprojectgroup9-42c62-default-rtdb.firebaseio.com/";
     public FirebaseDatabase fdb = FirebaseDatabase.getInstance(ACTIVITY_KEY);
 
