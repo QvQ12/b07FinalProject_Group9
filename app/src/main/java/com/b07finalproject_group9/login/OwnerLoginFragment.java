@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.b07finalproject_group9.MainActivity;
 import com.b07finalproject_group9.R;
+import com.b07finalproject_group9.objects.StoreOwnerUser;
 import com.b07finalproject_group9.owner.OwnerDashboardFragment;
 
 public class OwnerLoginFragment extends Fragment {
@@ -55,6 +56,8 @@ public class OwnerLoginFragment extends Fragment {
         lm.loginOwner(username, password)
                 .thenAccept(success -> {
                     if (success) {
+                        MainActivity.CurrShopperUser = null;
+                        MainActivity.CurrOwnerUser = new StoreOwnerUser(username);
                         Fragment f = new OwnerDashboardFragment();
                         FragmentTransaction ft = getParentFragmentManager().beginTransaction();
                         ft.replace(R.id.main_login_redirect, f).commit();

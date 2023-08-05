@@ -15,18 +15,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 
-import com.b07finalproject_group9.databinding.ActivityMainBinding;
-import com.b07finalproject_group9.databinding.MainActivityBinding;
 import com.b07finalproject_group9.login.OwnerLoginFragment;
 import com.b07finalproject_group9.login.OwnerSignUpFragment;
 import com.b07finalproject_group9.login.ShopperLoginFragment;
 import com.b07finalproject_group9.login.ShopperSignUpFragment;
+import com.b07finalproject_group9.objects.ShopperUser;
+import com.b07finalproject_group9.objects.StoreOwnerUser;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.FirebaseApp;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static MainActivityBinding binding;
+    public static ShopperUser CurrShopperUser;
+    public static StoreOwnerUser CurrOwnerUser;
+
     public void switchToOwner(){
         Intent intent = new Intent(this, com.example.owner.MainActivity.class);
         startActivity(intent);
