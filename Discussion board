@@ -110,5 +110,18 @@ Solved problems (by Miko Jenna)
     - diffiulty linking login/signup page to existing owner's home page
     - convert activity to fragments
 
-
-
+August 6th Meeting:
+Talked about:
+    - adding the functionality of orders
+    - Finishing up the app with full functionality
+    - MVP of login page
+Obstacles from the last meeting:
+    - Linking the login and owner's page as mention in the quick meetup
+Completed:
+    - linking owner's page with login (by Miko and Jenna)
+    - converting the activities to fragments in the owner's page (by Jenna)
+    - being able to add products to firebase (by Jenna and Miko)
+TODO: - next meeting 8th August:
+    - Making orders
+    - linking the shopper's page with the login
+    - Display the product in the owner's page
