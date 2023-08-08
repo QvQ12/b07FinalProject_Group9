@@ -22,9 +22,6 @@
     </string-array>
 
 
-
-
-
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -45,7 +42,6 @@
     <string name="buy_1">Buy and Own</string>
     <string name="buy_2">AT $9.99</string>
     <string name="movie">Movie</string>
-
 
 
     <!-- Error messages -->

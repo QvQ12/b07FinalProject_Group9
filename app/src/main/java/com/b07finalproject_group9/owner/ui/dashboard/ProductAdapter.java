@@ -1,5 +1,9 @@
 package com.b07finalproject_group9.owner.ui.dashboard;
 
+
+
+import static android.app.PendingIntent.getActivity;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,7 +11,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 import com.b07finalproject_group9.R;
 import com.b07finalproject_group9.objects.ProductInfo;
@@ -15,14 +23,14 @@ import com.b07finalproject_group9.objects.ProductInfo;
 import java.util.ArrayList;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHolder>{
-
+    static FragmentManager fragmentManager;
     Context context;
-
     ArrayList<ProductInfo> inventory;
-
-    public ProductAdapter(Context context, ArrayList<ProductInfo> inventory) {
+    public ProductAdapter(Context context, ArrayList<ProductInfo> inventory, FragmentManager fragmentManager) {
         this.context = context;
         this.inventory = inventory;
+        this.fragmentManager = fragmentManager;
+
     }
 
     @NonNull
@@ -58,6 +66,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             ProductQuantity = productView.findViewById(R.id.productQuantity);
             ProductPrice = productView.findViewById(R.id.productPrice);
             ProductDescription = productView.findViewById(R.id.productDescription);
+            itemView.findViewById(R.id.editButton).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Fragment someFragment = new AddNewProduct();
+                    FragmentTransaction transaction = fragmentManager.beginTransaction();
+                    transaction.replace(R.id.fragment_container_view, someFragment).commit();
+                    transaction.addToBackStack(null);
+                }
+            });
         }
+
     }
+
+
 }

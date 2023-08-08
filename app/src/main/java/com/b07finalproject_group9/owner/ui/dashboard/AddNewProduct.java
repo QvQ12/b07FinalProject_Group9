@@ -21,7 +21,6 @@ public class AddNewProduct extends Fragment {
     Button confirmAdd;
     private EditText name, quantity, price, description;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -34,8 +33,6 @@ public class AddNewProduct extends Fragment {
         EditText description_editText = view.findViewById(R.id.description_editText);
 
         confirmAdd = view.findViewById(R.id.confirmAdd);
-
-
 
         confirmAdd.setOnClickListener(new View.OnClickListener() {
             @Override

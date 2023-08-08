@@ -42,10 +42,9 @@ public class HomeFragment extends Fragment {
 
             textView = root.findViewById(R.id.textView3); // Initialize textView correctly
 
-            DatabaseReference query = FirebaseDatabase.getInstance().getReference("Shopper-UserList");
+            DatabaseReference query = FirebaseDatabase.getInstance().getReference("StoreOwner-UserList");
 
-
-            textView.setText(MainActivity.currUser.getPassword());
+            textView.setText(MainActivity.currUser.getUsername());
 
             return root;
         }

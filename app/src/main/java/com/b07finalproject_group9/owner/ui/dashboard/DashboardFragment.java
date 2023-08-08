@@ -33,7 +33,7 @@ public class DashboardFragment extends Fragment {
 
     private FragmentDashboardBinding binding;
     Button add;
-    Button existPlus;
+    Button edit;
 
     RecyclerView recyclerView;
     StoreOwnerInventoryModel sm = new StoreOwnerInventoryModel();
@@ -59,7 +59,6 @@ public class DashboardFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
         add = view.findViewById(R.id.button2);
-
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,7 +73,7 @@ public class DashboardFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         storeInventory = new ArrayList<>();
-        productAdapter = new ProductAdapter(getContext(), storeInventory);
+        productAdapter = new ProductAdapter(getContext(), storeInventory,getActivity().getSupportFragmentManager());
 
 
         sm.getProductInventory(MainActivity.currUser.getUsername()).
