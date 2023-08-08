@@ -1,199 +1,69 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context="com.tempfragments.ShopperDashboard">
 
-    <!-- TODO: Update blank fragment layout -->
     <Button
         android:id="@+id/button"
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:text="@string/return_to_main"
-        android:layout_centerHorizontal="true"
-        />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/slogan_category"
+        android:layout_marginTop="45dp" />
 
     <TextView
         android:id="@+id/slogan_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp"
-        android:text="Please Select Category"
+        android:text="Please Select Store"
         android:textAlignment="center"
         android:textSize="26sp"
         android:textStyle="bold"
-        />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        android:layout_marginTop="45dp" />
 
-    <LinearLayout
-        android:id="@+id/linear1_category_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/slogan_category"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_marginTop="45dp">
-
-        <ImageView
-            android:id="@+id/t_shirts"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/tshirts"
-            />
-
-        <ImageView
-            android:id="@+id/sports"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/sports"/>
-
-        <ImageView
-            android:id="@+id/female_dresses"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/female_dresses"/>
-
-        <ImageView
-            android:id="@+id/sweaters"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/sweather"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linear2_category_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/linear1_category_layout"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_marginTop="45dp">
-
-        <ImageView
-            android:id="@+id/glasses"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/glasses"/>
-
-        <ImageView
-            android:id="@+id/purses_bags_wallets"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/purses_bags"/>
-
-        <ImageView
-            android:id="@+id/hats_caps"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/hats"/>
-
-        <ImageView
-            android:id="@+id/shoes"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/shoess"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linear3_category_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/linear2_category_layout"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_marginTop="45dp">
-
-        <ImageView
-            android:id="@+id/headphones_handfree"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/headphoness"/>
-
-        <ImageView
-            android:id="@+id/laptop_pc"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/laptops"/>
-
-        <ImageView
-            android:id="@+id/watches"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/watches"/>
-
-        <ImageView
-            android:id="@+id/mobilephones"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/mobiles"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linear4_category_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/linear3_category_layout"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_marginTop="45dp">
-
-        <ImageView
-            android:id="@+id/gloves"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/gloves"/>
-
-        <ImageView
-            android:id="@+id/socks"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/socks"/>
-
-        <ImageView
-            android:id="@+id/shorts"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/shorts"/>
-
-        <ImageView
-            android:id="@+id/books"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/books"
-            />
-
-    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/storeList"
+        android:layout_width="409dp"
+        android:layout_height="306dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.408" />
 
     <ImageView
         android:id="@+id/shopping_cart"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/linear4_category_layout"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="268dp"
         android:src="@drawable/cart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storeList"
+        app:layout_constraintVertical_bias="0.325"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/ready_for_pick_up"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_below="@+id/shopping_cart"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginLeft="344dp"
+        android:layout_marginTop="24dp"
         android:src="@drawable/nav_cart"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shopping_cart"
         tools:ignore="SpeakableTextPresentCheck" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
