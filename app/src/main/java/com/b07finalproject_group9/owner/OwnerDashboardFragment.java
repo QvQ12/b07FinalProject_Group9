@@ -4,10 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -15,9 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.b07finalproject_group9.R;
-import com.example.owner.ui.dashboard.DashboardFragment;
-import com.example.owner.ui.home.HomeFragment;
-import com.example.owner.ui.notifications.NotificationsFragment;
+import com.b07finalproject_group9.owner.ui.dashboard.DashboardFragment;
+import com.b07finalproject_group9.owner.ui.home.HomeFragment;
+import com.b07finalproject_group9.owner.ui.notifications.NotificationsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 

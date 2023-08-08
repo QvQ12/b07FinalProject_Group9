@@ -1,4 +1,6 @@
-package com.example.owner.ui.dashboard;
+package com.b07finalproject_group9.objects;
+
+import java.util.HashMap;
 
 public class ProductInfo {
 
@@ -6,6 +8,14 @@ public class ProductInfo {
     String productQuantity;
     String productPrice;
     String productDescription;
+
+    public ProductInfo(HashMap<String, String> map){
+        productName = map.get("product_name");
+        productQuantity = map.get("quantity");
+        productPrice = map.get("price");
+        productDescription = map.get("description");
+
+    }
 
 
     public String getProductName() {
@@ -23,5 +33,8 @@ public class ProductInfo {
     public String getProductDescription() {
         return productDescription;
     }
+
+
+
 
 }

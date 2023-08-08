@@ -22,11 +22,6 @@ public class MainActivity extends AppCompatActivity {
     public static MainActivityBinding binding;
     public static User currUser; //Use this to track the current user
 
-    public void switchToOwner(){
-        Intent intent = new Intent(this, com.example.owner.MainActivity.class);
-        startActivity(intent);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

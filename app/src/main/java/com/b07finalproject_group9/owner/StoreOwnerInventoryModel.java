@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.b07finalproject_group9.DatabaseModel;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class StoreOwnerInventoryModel extends StoreOwnerModel{
+public class StoreOwnerInventoryModel extends DatabaseModel {
     public String addProductInventory( String store_username, String product_name,
                                      double price, int quantity, String description){
         /* Writes a new product to StoreOwner-UserList/store_username/Inventory then

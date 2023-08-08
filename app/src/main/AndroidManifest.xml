@@ -15,7 +15,7 @@
         <activity
             android:name="com.example.owner.MainActivity"
             android:exported="true" />
-        <activity android:name="com.example.owner.ui.dashboard.AddNewProduct" />
+        <activity android:name=".owner.ui.dashboard.AddNewProduct" />
         <activity
             android:name="com.b07finalproject_group9.MainActivity"
             android:exported="true"

@@ -1,4 +1,4 @@
-package com.example.owner.ui.dashboard;
+package com.b07finalproject_group9.owner.ui.dashboard;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.b07finalproject_group9.R;
+import com.b07finalproject_group9.objects.ProductInfo;
 
 import java.util.ArrayList;
 
