@@ -113,8 +113,7 @@ public class LoginModel extends DatabaseModel {
 
     public CompletableFuture<Boolean> loginOwner(String username, String password) {
         CompletableFuture<Boolean> completableFuture = new CompletableFuture<>();
-        DatabaseReference query = (FirebaseDatabase.getInstance().
-                getReference("StoreOwner-UserList/"));
+        DatabaseReference query = (fdb.getReference("StoreOwner-UserList/"));
 
         query.child(username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
@@ -129,7 +128,6 @@ public class LoginModel extends DatabaseModel {
             }
         });
         StoreOwnerUser thisUser = new StoreOwnerUser("", username, password);
-//        DatabaseModel.currentOwner = thisUser;
 
         return completableFuture;
     }
