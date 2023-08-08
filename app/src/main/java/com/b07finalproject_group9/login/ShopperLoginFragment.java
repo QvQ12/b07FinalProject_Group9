@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.b07finalproject_group9.MainActivity;
 import com.b07finalproject_group9.R;
 import com.b07finalproject_group9.objects.User;
-import com.tempfragments.ShopperDashboard;
+import com.b07finalproject_group9.shopper.ShopperDashboardFragment;
 
 public class ShopperLoginFragment extends Fragment {
 
@@ -27,7 +27,7 @@ public class ShopperLoginFragment extends Fragment {
                 .thenAccept(success -> {
                     if (success) {
                         MainActivity.currUser = new User(username);
-                        Fragment f = new ShopperDashboard();
+                        Fragment f = new ShopperDashboardFragment();
                         FragmentTransaction ft = getParentFragmentManager().beginTransaction();
                         ft.replace(R.id.main_login_redirect, f).commit();
                     } else {
