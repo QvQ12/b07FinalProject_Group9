@@ -95,9 +95,17 @@ TODO - next meeting 2nd August:
 August 2nd Meetup: (Miko&Jenna&Alvin)
 Completed:
     - Linked Cristal's login/signup page to Jenna's owner's page
+    - Converted all activities to fragments
 
 August 8th Meeting:
+Completed:
     - Final wrap-up of Owner's Dashboard & Products (Jenna & Alvin)
+    - MVP of the login page (Cristal)
+    - Linking the shopper's and owner's to the login page (Miko)
+    - Merged branches to main (Miko)
+    - Creating Shopping Cart and functionalities (Miko, Alvin and Raymond)
+    - Created an order dashboard and order page to shoppers (Alvin and Miko)
+ToDo:
     - Link order_fragment from shopper to owner (and to firebase) (Raymond)
-
-
+    - Complete orders
+    - Edit and fix design and UI of the android application.
