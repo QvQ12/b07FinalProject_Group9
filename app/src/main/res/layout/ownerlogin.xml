@@ -49,6 +49,7 @@
         android:hint="@string/enter_your_username"
         android:inputType="text"
         android:textSize="20sp"
+        android:digits="1234567890qwertyuiopsdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
         app:layout_constraintBottom_toBottomOf="@+id/owner_username_textView"
         app:layout_constraintStart_toEndOf="@+id/owner_username_textView"
         app:layout_constraintTop_toTopOf="@+id/owner_username_textView" />

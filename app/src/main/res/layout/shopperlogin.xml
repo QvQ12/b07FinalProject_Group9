@@ -47,6 +47,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/enter_your_username"
+        android:digits="1234567890qwertyuiopsdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
         android:inputType="text"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/shopper_username_textView"

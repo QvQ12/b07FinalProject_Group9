@@ -43,7 +43,7 @@ public class OrderDashboard extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         orderKey = new ArrayList<String>();
-        orderAdapter = new OrderAdapter((getContext()),orderKey);
+        orderAdapter = new OrderAdapter((getContext()),orderKey,getActivity().getSupportFragmentManager());
         om.getOrderKeysFromShopper(MainActivity.currUser.getUsername()).thenAccept(res-> processKey(res));
 
         Button returnToMainButton = view.findViewById(R.id.button);
