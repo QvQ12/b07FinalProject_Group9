@@ -3,6 +3,7 @@ package com.b07finalproject_group9.shopper.order;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.b07finalproject_group9.OrderModel;
 import com.b07finalproject_group9.R;
@@ -17,6 +19,7 @@ import com.b07finalproject_group9.objects.ProductInfo;
 import com.b07finalproject_group9.owner.StoreOwnerInventoryModel;
 import com.b07finalproject_group9.shopper.ShopperModel;
 import com.b07finalproject_group9.shopper.dashboard.ProductShopperAdapter;
+import com.b07finalproject_group9.shopper.dashboard.ShopperDashboardFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -69,6 +72,15 @@ public class StatusPage extends Fragment {
         om.getProductIDbyOrder(key).thenAccept(res -> processListOfProductID(res));
 //        om.getProductIDbyOrder(key).thenAccept(res -> Log.i("ORDER", ));
 
+        Button back = view.findViewById(R.id.back_button);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment f = new OrderDashboard();
+                FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+                ft.replace(R.id.main_login_redirect, f).commit();
+            }
+        });
         return view;
     }
 }
