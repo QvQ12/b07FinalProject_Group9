@@ -43,7 +43,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
         holder.itemView.findViewById(R.id.ViewOrderButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment someFragment = new ShopperProductPage(store.getStoreName());
+                Fragment someFragment = new ShopperProductPage(key);
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.main_login_redirect, someFragment).commit();
                 transaction.addToBackStack(null);

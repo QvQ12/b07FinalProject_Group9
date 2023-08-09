@@ -102,4 +102,30 @@ public class OrderModel extends DatabaseModel{
         return res;
     }
 
+    public CompletableFuture<ArrayList<String>> getProductIDbyOrder(String orderID){
+        CompletableFuture<ArrayList<String>> res = new CompletableFuture<>();
+
+        DatabaseReference db = fdb.getReference("Global-OrderList");
+        db.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<String> list = new ArrayList<>();
+
+                for(DataSnapshot child : snapshot.getChildren()){
+                    for(DataSnapshot ID : child.getChildren()){
+                        if(ID.getKey().equals("STATUS")){list.add(ID.getKey());}
+                    }
+                }
+                res.complete(list);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                res.complete(null);
+            }
+        });
+
+        return res;
+    }
+
 }
