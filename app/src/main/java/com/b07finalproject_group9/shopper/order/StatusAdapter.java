@@ -8,56 +8,61 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.b07finalproject_group9.R;
 import com.b07finalproject_group9.objects.ProductInfo;
-import com.b07finalproject_group9.shopper.cart.AddProductToCart;
-import com.b07finalproject_group9.shopper.dashboard.ShopperProductPage;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.MyViewHolder> {
-    Context context;
-    FragmentManager fragmentManager;
-    ArrayList<ProductInfo> orderList;
 
-    public StatusAdapter(Context context, ArrayList<ProductInfo> orderList, FragmentManager fragmentManager) {
+    private Context context;
+    private List<ProductInfo> inventory;
+    private FragmentManager fragmentManager;
+
+    public StatusAdapter(Context context, List<ProductInfo> inventory, FragmentManager fragmentManager) {
         this.context = context;
-        this.orderList = orderList;
+        this.inventory = inventory;
         this.fragmentManager = fragmentManager;
+        Log.i("INVENTORY", inventory.toString());
     }
+
+    @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.order_product_display,parent,false);
-        return new MyViewHolder(v);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.order_product_display, parent, false);
+        return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        ProductInfo product = orderList.get(position);
-        holder.orderName.setText(product.getProductName());
-        holder.orderQuantity.setText(product.getProductQuantity());
-        holder.orderPrice.setText(product.getProductPrice());
-
+        ProductInfo product = inventory.get(position);
+        holder.productName.setText(product.getProductName());
+        holder.productQuantity.setText(product.getProductQuantity());
+        holder.productPrice.setText(product.getProductPrice());
     }
 
     @Override
     public int getItemCount() {
-        return orderList.size();
+        return inventory.size();
     }
-    public  class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView orderName, orderPrice, orderQuantity;
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView productName;
+        private TextView productPrice;
+        private TextView productQuantity;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            orderName = itemView.findViewById(R.id.orderProductName);
-            orderQuantity = itemView.findViewById(R.id.orderProductQuantity);
-            orderPrice = itemView.findViewById(R.id.orderProductPrice);
-
+            productName = itemView.findViewById(R.id.orderProductName);
+            productQuantity = itemView.findViewById(R.id.orderProductQuantity);
+            productPrice = itemView.findViewById(R.id.orderProductPrice);
         }
+
 
     }
 }
