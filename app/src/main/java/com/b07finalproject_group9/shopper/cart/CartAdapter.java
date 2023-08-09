@@ -1,6 +1,7 @@
 package com.b07finalproject_group9.shopper.cart;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,8 @@ public class CartAdapter extends  RecyclerView.Adapter<CartAdapter.MyViewHolder>
         ProductInfo product = productList.get(position);
         holder.ProductName.setText(product.getProductName());
         holder.ProductQuantity.setText(product.getProductQuantity());
+        holder.ProductPrice.setText(product.getProductPrice());
+        Log.d("CartAdapter", "Product list size: " + productList.size());
 
         holder.itemView.findViewById(R.id.cartEditButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +69,7 @@ public class CartAdapter extends  RecyclerView.Adapter<CartAdapter.MyViewHolder>
 
         TextView ProductName, ProductPrice, ProductQuantity, ProductDescription, ProductId;
         public MyViewHolder(@NonNull View productView){
+
             super(productView);
             ProductName = productView.findViewById(R.id.cartProductName);
             ProductQuantity = productView.findViewById(R.id.cartProductQuantity);

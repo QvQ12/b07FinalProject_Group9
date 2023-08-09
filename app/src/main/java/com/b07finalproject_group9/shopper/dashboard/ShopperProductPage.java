@@ -40,7 +40,6 @@ public class ShopperProductPage extends Fragment {
         inventory.add(prod);
         recyclerView.setAdapter(productAdapter);
     }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_shopper_product_page, container, false);
@@ -58,7 +57,5 @@ public class ShopperProductPage extends Fragment {
         super.onDestroyView();
         Object binding = null;
     }
-
-
 }
 

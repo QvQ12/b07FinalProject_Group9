@@ -28,18 +28,12 @@ public class ShopperDashboardFragment extends Fragment {
     com.b07finalproject_group9.shopper.dashboard.StoreAdapter StoreAdapter; //create a new adapter for that later
     ArrayList<Store> storeNames;//make the class store, jsut a store name
     public ShopperDashboardFragment(){}
-
-
     private void processStoreNames(ArrayList<String> stores){
-
         for(int i = 0; i < stores.size(); i++){
             storeNames.add(new Store(stores.get(i)));
         }
-
         recyclerView.setAdapter(StoreAdapter);
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -63,15 +63,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.MyViewHolder
         public MyViewHolder(@NonNull View productView){
             super(productView);
             storeName = productView.findViewById(R.id.storename_shopper_dashboard);
-//            itemView.findViewById(R.id.Productbutton).setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Fragment someFragment = new ShopperProductPage();
-//                    FragmentTransaction transaction = fragmentManager.beginTransaction();
-//                    transaction.replace(R.id.main_login_redirect, someFragment).commit();
-//                    transaction.addToBackStack(null);
-//                }
-//            });
+
         }
     }
 }

@@ -4,11 +4,21 @@ import java.util.HashMap;
 
 public class ProductInfo {
 
-    String productName;
-    String productQuantity;
-    String productPrice;
-    String productDescription;
-    String productId;
+    public String productName;
+    public String productQuantity;
+    public String productPrice;
+    public String productDescription;
+    public String productId;
+
+    public ProductInfo(String productName, String productQuantity,
+                       String productPrice, String productDescription, String productId) {
+        this.productName = productName;
+        this.productQuantity = productQuantity;
+        this.productPrice = productPrice;
+        this.productDescription = productDescription;
+        this.productId = productId;
+    }
+
 
 
     public ProductInfo(HashMap<String, String> map, String id){
