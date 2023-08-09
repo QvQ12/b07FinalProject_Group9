@@ -7,17 +7,24 @@
     android:background="@color/white"
     tools:context=".owner.ui.notifications.NotificationsFragment">
 
-    <TextView
-        android:id="@+id/text_order"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <!-- Return to Main Button -->
+    <Button
+        android:id="@+id/notificationsReturnButton"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="Back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Notifications RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/notificationPageRecyclerView"
+        android:layout_width="378dp"
+        android:layout_height="546dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

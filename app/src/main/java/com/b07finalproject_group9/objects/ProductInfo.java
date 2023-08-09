@@ -30,6 +30,13 @@ public class ProductInfo {
 
     }
 
+    public ProductInfo(HashMap<String, String> map) {
+        productName = map.get("product_name");
+        productQuantity = map.get("quantity");
+        productPrice = map.get("price");
+        productDescription = map.get("description");
+        productId = map.get("ProductID");
+    }
 
 
     public String getProductName() {

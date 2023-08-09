@@ -1,6 +1,7 @@
 package com.b07finalproject_group9.shopper.cart;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -66,13 +67,8 @@ public class CartModel extends DatabaseModel {
             for(String item : cart.CartContent.get(store).keySet()){
                 if(cart.CartContent.get(store).get(item) < 1){
                     DatabaseReference db = fdb.getReference("Shopper-UserList");
-                    db.child(shopper).child("cart").child(store).child(item).removeValue()
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            Log.i("CART", "I DID IT");
-                        }
-                    });
+                    cart.CartContent.get(store).remove(item);
+                    db.child(shopper).child("cart").setValue(cart.CartContent);
                 }
             }
         }
@@ -80,6 +76,7 @@ public class CartModel extends DatabaseModel {
 
     private void processCartThenPush(String shopper, Cart cart, String orderID, DatabaseReference db){
         //Copy cart to global orders list
+        validateCart(cart, shopper);
         for(String store : cart.CartContent.keySet()){
             cart.CartContent.get(store).put("STATUS", 0);
             //Give order reference to each store mentioned in the keyset.
@@ -93,7 +90,10 @@ public class CartModel extends DatabaseModel {
     }
 
 
+
     public void pushCartToOrderList(String shoppername){
+
+
         DatabaseReference db = fdb.getReference();
         String orderID = db.push().getKey();
         getUserCart(shoppername).thenAccept(res->
