@@ -1,9 +1,13 @@
 package com.b07finalproject_group9.shopper.cart;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.b07finalproject_group9.DatabaseModel;
 import com.b07finalproject_group9.objects.Cart;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -58,10 +62,27 @@ public class CartModel extends DatabaseModel {
         return res;
     }
 
-    public void pushCartToOrderList(String shoppername, Cart cart){
-        DatabaseReference db = fdb.getReference("Global-OrderList");
-        String productID = db.push().getKey();
-        db.child(productID).setValue(cart.CartContent);
+
+    private void processCartThenPush(Cart cart, String orderID, DatabaseReference db){
+        //Copy cart to global orders list
+        for(String store : cart.CartContent.keySet()){
+            cart.CartContent.get(store).put("STATUS", 0);
+            //Give order reference to each store mentioned in the keyset.
+            db.child("StoreOwner-UserList").child(store).child("orders")
+                    .child(orderID).setValue(0);
+        }
+        db.child("Global-OrderList").child(orderID).setValue(cart.CartContent);
+
+
+    }
+    public void pushCartToOrderList(String shoppername){
+        DatabaseReference db = fdb.getReference();
+        String orderID = db.push().getKey();
+        getUserCart(shoppername).thenAccept(res-> processCartThenPush(res, orderID, db));
+
+        //Give reference to order to shopper
+        db.child("Shopper-UserList").child(shoppername)
+                .child("orders").child(orderID).setValue(0);
 
     }
 

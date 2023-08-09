@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context="com.tempfragments.ShopperDashboard">
+    android:background="@color/white">
 
     <Button
         android:id="@+id/button"
@@ -47,23 +46,84 @@
         android:id="@+id/shopping_cart"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="268dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="280dp"
+        android:layout_marginBottom="16dp"
         android:src="@drawable/cart"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ready_for_pick_up"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/storeList"
-        app:layout_constraintVertical_bias="0.325"
+        app:layout_constraintVertical_bias="0.948"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/ready_for_pick_up"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginLeft="344dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="49dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="123dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:src="@drawable/nav_cart"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shopping_cart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storeList"
+        app:layout_constraintVertical_bias="0.357"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/OrderTextView"
+        android:layout_width="49dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="16dp"
+        android:text="Order"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/ready_for_pick_up"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/CartTextView"
+        app:layout_constraintTop_toBottomOf="@+id/storeList" />
+
+    <TextView
+        android:id="@+id/CartTextView"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="108dp"
+        android:text="Cart"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/shopping_cart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storeList" />
+
+    <Button
+        android:id="@+id/CartButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="279dp"
+        android:layout_marginBottom="24dp"
+        android:text="Button"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/OrderPageButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CartTextView" />
+
+    <Button
+        android:id="@+id/OrderPageButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="279dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:text="Button"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shopping_cart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

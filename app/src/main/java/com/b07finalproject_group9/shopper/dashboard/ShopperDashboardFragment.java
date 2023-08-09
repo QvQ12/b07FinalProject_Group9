@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -23,7 +25,8 @@ import java.util.ArrayList;
 public class ShopperDashboardFragment extends Fragment {
 
     private FragmentDashboardBinding binding;
-
+    Button cartPage;
+    Button orderPage;
     RecyclerView recyclerView;
     com.b07finalproject_group9.shopper.dashboard.StoreAdapter StoreAdapter; //create a new adapter for that later
     ArrayList<Store> storeNames;//make the class store, jsut a store name
@@ -45,6 +48,24 @@ public class ShopperDashboardFragment extends Fragment {
         StoreAdapter = new StoreAdapter(getContext(), storeNames, getActivity().getSupportFragmentManager());
         ShopperModel sm = new ShopperModel();
         sm.getStoreNames().thenAccept(res-> processStoreNames(res));
+
+        cartPage = view.findViewById(R.id.CartButton);
+        cartPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "going to cart : ",Toast.LENGTH_SHORT).show();
+            }
+        });
+        orderPage = view.findViewById(R.id.OrderPageButton);
+        orderPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText(getActivity(), "going to orders edited: ",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
         return view;
     }
     @Override

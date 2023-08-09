@@ -56,6 +56,7 @@ public class ShoppingCart extends Fragment {
         shoppingCartRecyclerView.setAdapter(cartAdapter);
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -82,10 +83,11 @@ public class ShoppingCart extends Fragment {
             }
         });
 
-        Button payOrderButton = view.findViewById(R.id.payOrderButton);
+        Button payOrderButton = view.findViewById(R.id.orderNowButton);
         payOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                cm.pushCartToOrderList(MainActivity.currUser.getUsername());
                 Fragment f = new ShopperDashboardFragment();
                 FragmentTransaction ft = getParentFragmentManager().beginTransaction();
                 ft.replace(R.id.main_login_redirect, f).commit();;

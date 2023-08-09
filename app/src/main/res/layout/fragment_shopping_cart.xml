@@ -16,30 +16,25 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/payOrderButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pay and Order"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <!-- Shopping Cart RecyclerView -->
+
+    <!-- Page Turner Button -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/shoppingCartRecyclerView"
         android:layout_width="378dp"
         android:layout_height="546dp"
-        app:layout_constraintBottom_toTopOf="@+id/pageTurner"
+        android:layout_marginTop="64dp"
+        app:layout_constraintBottom_toTopOf="@+id/orderNowButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Page Turner Button -->
     <Button
-        android:id="@+id/pageTurner"
+        android:id="@+id/orderNowButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next Page"
+        android:text="Order Now"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
