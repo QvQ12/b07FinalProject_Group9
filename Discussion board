@@ -109,3 +109,9 @@ ToDo:
     - Link order_fragment from shopper to owner (and to firebase) (Raymond)
     - Complete orders
     - Edit and fix design and UI of the android application.
+
+August 9th Meeting:
+Completed:
+    - UI design, Button linkages, Order Status on Shopper (By Jenna)
+    - Shopping cart on Shopper, Firebase linkage on order&products (Miko)
+    - Order list on Shopper (Alvin)
