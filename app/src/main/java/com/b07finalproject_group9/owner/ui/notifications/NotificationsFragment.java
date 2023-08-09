@@ -1,6 +1,34 @@
 package com.b07finalproject_group9.owner.ui.notifications;
 
 import android.os.Bundle;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import com.b07finalproject_group9.R;
+import java.util.ArrayList;
+import android.os.Bundle;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import com.b07finalproject_group9.OrderModel;
+import com.b07finalproject_group9.MainActivity;
+import com.b07finalproject_group9.R;
+import com.b07finalproject_group9.shopper.dashboard.ShopperDashboardFragment;
+import java.util.ArrayList;
+
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,27 +39,46 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.b07finalproject_group9.databinding.FragmentNotificationsBinding;
+import com.b07finalproject_group9.shopper.order.OrderAdapter;
 
 public class NotificationsFragment extends Fragment {
 
-    private FragmentNotificationsBinding binding;
+    RecyclerView recyclerView;
+    NotificationAdapter notificationAdapter;
+    ArrayList<String> notificationsList;
+    OrderModel om = new OrderModel();
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        NotificationsViewModel notificationsViewModel =
-                new ViewModelProvider(this).get(NotificationsViewModel.class);
+    private void processKey(ArrayList<String> res){
+        for(int i=0;i<res.size();i++){
+            notificationsList.add(res.get(i));
 
-        binding = FragmentNotificationsBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
-        final TextView textView = binding.textOrder;
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        return root;
+        }
+        recyclerView.setAdapter(notificationAdapter);
     }
-
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_notifications, container, false);
+        recyclerView = view.findViewById(R.id.notificationPageRecyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        notificationsList = new ArrayList<>(); // Initialize the list
+        // Fetch order keys for the logged-in store owner
+        notificationAdapter = new NotificationAdapter((getContext()),notificationsList,getActivity().getSupportFragmentManager());
+        om.getOrderKeysFromStoreOwner(MainActivity.currUser.getUsername()).thenAccept(res -> processKey(res));
+        Log.i("ORDER", notificationsList.toString());
+
+        Button returnToMainButton = view.findViewById(R.id.notificationsReturnButton);
+        returnToMainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment f = new ShopperDashboardFragment();
+                FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+                ft.replace(R.id.main_login_redirect, f).commit();
+            }
+        });
+
+        return view;
     }
 }

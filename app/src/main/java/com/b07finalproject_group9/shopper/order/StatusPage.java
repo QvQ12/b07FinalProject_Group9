@@ -77,16 +77,6 @@ public class StatusPage extends Fragment {
                 ft.replace(R.id.main_login_redirect, f).commit();
             }
         });
-
-        Button back = view.findViewById(R.id.back_button);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment f = new OrderDashboard();
-                FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-                ft.replace(R.id.main_login_redirect, f).commit();
-            }
-        });
         return view;
     }
 }
