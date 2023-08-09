@@ -1,4 +1,4 @@
-package com.b07finalproject_group9.shopper;
+package com.b07finalproject_group9.objects;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

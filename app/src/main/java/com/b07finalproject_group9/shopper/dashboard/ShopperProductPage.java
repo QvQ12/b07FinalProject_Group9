@@ -1,27 +1,23 @@
-package com.b07finalproject_group9.shopper;
+package com.b07finalproject_group9.shopper.dashboard;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.b07finalproject_group9.MainActivity;
 import com.b07finalproject_group9.R;
 import com.b07finalproject_group9.objects.ProductInfo;
 import com.b07finalproject_group9.owner.StoreOwnerInventoryModel;
-import com.b07finalproject_group9.owner.ui.dashboard.ProductAdapter;
+import com.b07finalproject_group9.shopper.dashboard.ProductShopperAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ShopperProductPage extends Fragment {
-    public String storeName;
+    public static String storeName;
     StoreOwnerInventoryModel sm = new StoreOwnerInventoryModel();
     private RecyclerView recyclerView;
     private ProductShopperAdapter productAdapter;

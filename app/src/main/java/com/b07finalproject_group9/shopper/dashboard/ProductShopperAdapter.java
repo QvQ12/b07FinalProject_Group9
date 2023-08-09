@@ -1,4 +1,4 @@
-package com.b07finalproject_group9.shopper;
+package com.b07finalproject_group9.shopper.dashboard;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.b07finalproject_group9.R;
 import com.b07finalproject_group9.objects.ProductInfo;
-import com.b07finalproject_group9.owner.ui.dashboard.EditProduct;
+import com.b07finalproject_group9.shopper.cart.AddProductToCart;
 
 
 import java.util.ArrayList;
@@ -43,15 +43,15 @@ public class ProductShopperAdapter extends RecyclerView.Adapter<ProductShopperAd
         holder.ProductQuantity.setText(product.getProductQuantity());
         holder.ProductPrice.setText(product.getProductPrice());
         holder.ProductDescription.setText(product.getProductDescription());
-//        holder.itemView.findViewById(R.id.add).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Fragment someFragment = new EditProduct();
-//                FragmentTransaction transaction = fragmentManager.beginTransaction();
-//                transaction.replace(R.id.fragment_container_view, someFragment).commit();
-//                transaction.addToBackStack(null);
-//            }
-//        });
+        holder.itemView.findViewById(R.id.add).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment someFragment = new AddProductToCart(ShopperProductPage.storeName, product.getProductId());
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.main_login_redirect, someFragment).commit();
+                transaction.addToBackStack(null);
+            }
+        });
 
     }
 
@@ -70,15 +70,7 @@ public class ProductShopperAdapter extends RecyclerView.Adapter<ProductShopperAd
             ProductQuantity = productView.findViewById(R.id.productQuantity);
             ProductPrice = productView.findViewById(R.id.productPrice);
             ProductDescription = productView.findViewById(R.id.productDescription);
-//            itemView.findViewById(R.id.add).setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Fragment someFragment = new EditProduct();
-//                    FragmentTransaction transaction = fragmentManager.beginTransaction();
-//                    transaction.replace(R.id.fragment_container_view, someFragment).commit();
-//                    transaction.addToBackStack(null);
-//                }
-//            });
+
         }
 
     }

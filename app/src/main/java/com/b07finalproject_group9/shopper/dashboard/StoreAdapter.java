@@ -1,4 +1,4 @@
-package com.b07finalproject_group9.shopper;
+package com.b07finalproject_group9.shopper.dashboard;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,8 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.b07finalproject_group9.R;
-import com.b07finalproject_group9.objects.ProductInfo;
-import com.b07finalproject_group9.owner.ui.dashboard.EditProduct;
+import com.b07finalproject_group9.objects.Store;
 
 import java.util.ArrayList;
 

@@ -19,7 +19,6 @@ import com.b07finalproject_group9.MainActivity;
 import com.b07finalproject_group9.R;
 import com.b07finalproject_group9.objects.User;
 import com.b07finalproject_group9.owner.OwnerDashboardFragment;
-import com.b07finalproject_group9.shopper.ShopperDashboardFragment;
 
 public class OwnerSignUpFragment extends Fragment {
 

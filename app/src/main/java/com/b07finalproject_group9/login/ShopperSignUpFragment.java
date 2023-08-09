@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.b07finalproject_group9.MainActivity;
 import com.b07finalproject_group9.R;
 import com.b07finalproject_group9.objects.User;
-import com.b07finalproject_group9.shopper.ShopperDashboardFragment;
+import com.b07finalproject_group9.shopper.dashboard.ShopperDashboardFragment;
 
 public class ShopperSignUpFragment extends Fragment {
 

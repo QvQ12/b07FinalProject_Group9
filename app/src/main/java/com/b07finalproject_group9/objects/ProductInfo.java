@@ -1,7 +1,5 @@
 package com.b07finalproject_group9.objects;
 
-import com.b07finalproject_group9.shopper.Product;
-
 import java.util.HashMap;
 
 public class ProductInfo {

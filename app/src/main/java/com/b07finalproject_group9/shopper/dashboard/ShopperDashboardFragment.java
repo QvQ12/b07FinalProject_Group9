@@ -1,7 +1,6 @@
-package com.b07finalproject_group9.shopper;
+package com.b07finalproject_group9.shopper.dashboard;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,18 +13,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.b07finalproject_group9.databinding.FragmentDashboardBinding;
 import com.b07finalproject_group9.R;
+import com.b07finalproject_group9.objects.Store;
+import com.b07finalproject_group9.shopper.ShopperModel;
+import com.b07finalproject_group9.shopper.dashboard.StoreAdapter;
 
 
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ShopperDashboardFragment extends Fragment {
 
     private FragmentDashboardBinding binding;
 
     RecyclerView recyclerView;
-    StoreAdapter StoreAdapter; //create a new adapter for that later
+    com.b07finalproject_group9.shopper.dashboard.StoreAdapter StoreAdapter; //create a new adapter for that later
     ArrayList<Store> storeNames;//make the class store, jsut a store name
     public ShopperDashboardFragment(){}
 

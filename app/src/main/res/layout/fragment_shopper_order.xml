@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.b07finalproject_group9.shopper.ShoppingCart">
+    tools:context="com.b07finalproject_group9.shopper.cart.ShoppingCart">
 
     <!-- Return to Main Button -->
     <Button

@@ -1,27 +1,53 @@
-package com.b07finalproject_group9.shopper;
+package com.b07finalproject_group9.shopper.cart;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import android.content.Intent;
 
+import com.b07finalproject_group9.MainActivity;
 import com.b07finalproject_group9.R;
+import com.b07finalproject_group9.objects.Cart;
+import com.b07finalproject_group9.objects.ProductInfo;
+import com.b07finalproject_group9.owner.StoreOwnerInventoryModel;
+import com.b07finalproject_group9.shopper.dashboard.ShopperDashboardFragment;
 
 
 public class ShoppingCart extends Fragment {
 
     private RecyclerView shoppingCartRecyclerView;
-    private ItemProductAdapter adapter;
-    private List<Product> products = new ArrayList<>();
+    Button edit;
+    CartAdapter cartAdapter;
+    ArrayList<ProductInfo> productList;
+
+
+
+    private void processCart(Cart cart){
+        for(String store : cart.CartContent.keySet()){
+            for(String productID : cart.CartContent.get(store).keySet()){
+                processItem(store, productID, cart.CartContent.get(store).get(productID));
+            }
+        }
+        shoppingCartRecyclerView.setAdapter(cartAdapter);
+    }
+
+    private void processItem(String storename, String productID, int quantity){
+        StoreOwnerInventoryModel sm = new StoreOwnerInventoryModel();
+        sm.getSpecificProduct(productID, storename).thenAccept(res -> productList
+                            .add(new ProductInfo(res,res.get("ProductID"))));
+
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,10 +56,15 @@ public class ShoppingCart extends Fragment {
         Button returnToMainButton = view.findViewById(R.id.button);
 
         shoppingCartRecyclerView = view.findViewById(R.id.shoppingCartRecyclerView);
-
-        adapter = new ItemProductAdapter(products);
+        shoppingCartRecyclerView.setHasFixedSize(true);
         shoppingCartRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        shoppingCartRecyclerView.setAdapter(adapter);
+        productList = new ArrayList<>();
+
+        CartModel cm = new CartModel();
+        cm.getUserCart(MainActivity.currUser.getUsername()).thenAccept(res -> processCart(res));
+
+        cartAdapter = new CartAdapter(getContext(), productList,
+                getActivity().getSupportFragmentManager());
 
         returnToMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
