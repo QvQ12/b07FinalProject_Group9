@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.b07finalproject_group9.R;
 import com.b07finalproject_group9.objects.Cart;
 import com.b07finalproject_group9.objects.ProductInfo;
+import com.b07finalproject_group9.shopper.ShopperModel;
 import com.b07finalproject_group9.shopper.dashboard.ProductShopperAdapter;
 import com.b07finalproject_group9.shopper.dashboard.ShopperProductPage;
 
@@ -25,6 +26,8 @@ public class CartAdapter extends  RecyclerView.Adapter<CartAdapter.MyViewHolder>
     static FragmentManager fragmentManager;
     Context context;
     ArrayList<ProductInfo> productList;
+
+    ShopperModel sm = new ShopperModel();
 
     public CartAdapter(Context context, ArrayList<ProductInfo> productList, FragmentManager fragmentManager) {
         this.context = context;
@@ -39,6 +42,12 @@ public class CartAdapter extends  RecyclerView.Adapter<CartAdapter.MyViewHolder>
         return new MyViewHolder(v);
     }
 
+    private void onClickEdit(ProductInfo product, String store){
+        Fragment someFragment = new AddProductToCart(store, product.getProductId());
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.main_login_redirect, someFragment).commit();
+        transaction.addToBackStack(null);
+    }
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ProductInfo product = productList.get(position);
@@ -49,10 +58,9 @@ public class CartAdapter extends  RecyclerView.Adapter<CartAdapter.MyViewHolder>
         holder.itemView.findViewById(R.id.cartEditButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment someFragment = new AddProductToCart(ShopperProductPage.storeName, product.getProductId());
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.main_login_redirect, someFragment).commit();
-                transaction.addToBackStack(null);
+                sm.getStoreBasedOnProductID(product.getProductId())
+                        .thenAccept(res -> onClickEdit(product, res));
+
             }
         });
 

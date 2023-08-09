@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,13 +39,16 @@ public class StatusPage extends Fragment {
 
     private void processProductID(String prodID, String store){
         sm.getSpecificProduct(prodID, store).thenAccept(map -> addToProductList(map, prodID));
+
     }
     private void addToProductList(HashMap<String, String> map, String prodID){
+
         ProductInfo p = new ProductInfo(map, prodID);
         productList.add(p);
         recyclerView.setAdapter(statusAdapter);
     }
     private void processListOfProductID(ArrayList<String> list){
+
         if(list == null) return;
         for(int i = 0; i < list.size(); i++){
             String prodID = list.get(i);
@@ -63,6 +67,8 @@ public class StatusPage extends Fragment {
         productList = new ArrayList<>();
         statusAdapter = new StatusAdapter(getContext(), productList,getActivity().getSupportFragmentManager());
         om.getProductIDbyOrder(key).thenAccept(res -> processListOfProductID(res));
+//        om.getProductIDbyOrder(key).thenAccept(res -> Log.i("ORDER", ));
+
         return view;
     }
 }

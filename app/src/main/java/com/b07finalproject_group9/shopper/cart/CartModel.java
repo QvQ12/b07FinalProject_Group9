@@ -7,8 +7,10 @@ import androidx.annotation.Nullable;
 
 import com.b07finalproject_group9.DatabaseModel;
 import com.b07finalproject_group9.objects.Cart;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.color.utilities.DislikeAnalyzer;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -64,7 +66,13 @@ public class CartModel extends DatabaseModel {
             for(String item : cart.CartContent.get(store).keySet()){
                 if(cart.CartContent.get(store).get(item) < 1){
                     DatabaseReference db = fdb.getReference("Shopper-UserList");
-                    db.child(shopper).child("cart").child(store).child(item).removeValue();
+                    db.child(shopper).child("cart").child(store).child(item).removeValue()
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Log.i("CART", "I DID IT");
+                        }
+                    });
                 }
             }
         }

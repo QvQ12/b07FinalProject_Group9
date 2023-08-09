@@ -1,6 +1,7 @@
 package com.b07finalproject_group9;
 
 import android.provider.ContactsContract;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -113,7 +114,9 @@ public class OrderModel extends DatabaseModel{
 
                 for(DataSnapshot child : snapshot.getChildren()){
                     for(DataSnapshot ID : child.getChildren()){
-                        if(ID.getKey().equals("STATUS")){list.add(ID.getKey());}
+                        if(!ID.getKey().equals("STATUS")){
+                            list.add(ID.getKey());
+                        }
                     }
                 }
                 res.complete(list);

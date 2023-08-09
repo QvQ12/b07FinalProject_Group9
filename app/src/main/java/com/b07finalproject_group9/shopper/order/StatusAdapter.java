@@ -1,6 +1,7 @@
 package com.b07finalproject_group9.shopper.order;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,7 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.MyViewHold
         holder.orderName.setText(product.getProductName());
         holder.orderQuantity.setText(product.getProductQuantity());
         holder.orderPrice.setText(product.getProductPrice());
+
     }
 
     @Override
