@@ -15,8 +15,6 @@ import java.util.HashMap;
 import java.util.concurrent.CompletableFuture;
 
 public class OrderModel extends DatabaseModel{
-
-
     public CompletableFuture<ArrayList<String>> getOrderKeysFromShopper(String username){
         DatabaseReference db = fdb.getReference("Shopper-UserList").child(username)
                 .child("cart");

@@ -21,6 +21,7 @@ import com.b07finalproject_group9.owner.ui.dashboard.AddNewProduct;
 import com.b07finalproject_group9.shopper.ShopperModel;
 import com.b07finalproject_group9.shopper.cart.ShoppingCart;
 import com.b07finalproject_group9.shopper.dashboard.StoreAdapter;
+import com.b07finalproject_group9.shopper.order.OrderDashboard;
 
 
 import java.util.ArrayList;
@@ -67,10 +68,10 @@ public class ShopperDashboardFragment extends Fragment {
         orderPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Fragment someFragment = new AddNewProduct();
-//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.fragment_container_view, someFragment).commit();
-//                transaction.addToBackStack(null);
+                Fragment someFragment = new OrderDashboard();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_login_redirect, someFragment).commit();
+                transaction.addToBackStack(null);
                 Toast.makeText(getActivity(), "going to orders edited: ",Toast.LENGTH_SHORT).show();
             }
         });

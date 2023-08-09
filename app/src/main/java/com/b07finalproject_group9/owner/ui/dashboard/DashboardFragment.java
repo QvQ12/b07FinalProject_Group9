@@ -48,7 +48,6 @@ public class DashboardFragment extends Fragment {
     }
 
     private void addItemToLocalInventory(ArrayList<ProductInfo> inventory, ProductInfo prod){
-
         inventory.add(prod);
         recyclerView.setAdapter(productAdapter);
     }
