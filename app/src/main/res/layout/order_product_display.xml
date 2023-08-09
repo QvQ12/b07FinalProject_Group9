@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/product_display"
+    android:id="@+id/orderProductDisplay"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardElevation="8dp"
@@ -85,37 +85,6 @@
                 android:layout_marginLeft="8dp"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
-        </LinearLayout>
-
-
-
-        <Button
-            android:id="@+id/cartEditButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="Edit" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Id:"
-                android:textColor="@color/black"
-                android:textSize="26sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/ProductId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="invisible"></TextView>
         </LinearLayout>
 
 

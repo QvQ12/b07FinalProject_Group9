@@ -19,35 +19,42 @@ import com.b07finalproject_group9.owner.StoreOwnerInventoryModel;
 public class EditProduct extends Fragment {
 
     Button ConfirmEdit;
-
-    private EditText name, quantity, price, description;
+    private EditText product_name_editText, quantity_editText, price_editText, description_editText;
 
     public static String key;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_edit_product, container, false);
 
-        EditText product_name_editText = view.findViewById(R.id.name_editText);
-        EditText quantity_editText = view.findViewById(R.id.quantity_editText);
-        EditText price_editText = view.findViewById(R.id.price_editText);
-        EditText description_editText = view.findViewById(R.id.description_editText);
-
+        product_name_editText = view.findViewById(R.id.name_editText);
+        quantity_editText = view.findViewById(R.id.quantity_editText);
+        price_editText = view.findViewById(R.id.price_editText);
+        description_editText = view.findViewById(R.id.description_editText);
         ConfirmEdit = view.findViewById(R.id.confirm_edit);
+
+        StoreOwnerInventoryModel sm = new StoreOwnerInventoryModel();
+
+        // Fetch the product details
+        sm.getSpecificProduct(key, MainActivity.currUser.getUsername()).thenAccept(productDetails -> {
+            product_name_editText.setText(productDetails.get("product_name"));
+            quantity_editText.setText(productDetails.get("quantity"));
+            price_editText.setText(productDetails.get("price"));
+            description_editText.setText(productDetails.get("description"));
+        });
 
         ConfirmEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                StoreOwnerInventoryModel sm = new StoreOwnerInventoryModel();
-                sm.editProductInventory(MainActivity.currUser.getUsername(), key ,
-                        product_name_editText.getText().toString(), Double.parseDouble(price_editText.getText().toString()),
-                        Integer.parseInt(quantity_editText.getText().toString()) ,description_editText.getText().toString());
-                Toast.makeText(getActivity(), "Product successfully edited: ",Toast.LENGTH_SHORT).show();
+                sm.editProductInventory(MainActivity.currUser.getUsername(), key,
+                        product_name_editText.getText().toString(),
+                        Double.parseDouble(price_editText.getText().toString()),
+                        Integer.parseInt(quantity_editText.getText().toString()),
+                        description_editText.getText().toString());
+                Toast.makeText(getActivity(), "Product successfully edited: ", Toast.LENGTH_SHORT).show();
             }
         });
-        // Inflate the layout for this fragment
         return view;
     }
 }

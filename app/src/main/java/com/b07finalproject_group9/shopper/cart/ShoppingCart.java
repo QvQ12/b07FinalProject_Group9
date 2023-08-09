@@ -135,5 +135,5 @@ public class ShoppingCart extends Fragment {
         });
         return view;
     }
-    // Assuming you have the Product and ItemProductAdapter classes somewhere either in separate files or in this file.
+
 }
