@@ -59,17 +59,16 @@ public class CartModel extends DatabaseModel {
     }
 
 
-    private void validateCart(Cart cart, String shopper){
+    public void validateCart(Cart cart, String shopper){
         for(String store : cart.CartContent.keySet()){
             for(String item : cart.CartContent.get(store).keySet()){
                 if(cart.CartContent.get(store).get(item) < 1){
-                    DatabaseReference db = fdb.getReference("StoreOwner-UserList");
+                    DatabaseReference db = fdb.getReference("Shopper-UserList");
                     db.child(shopper).child("cart").child(store).child(item).removeValue();
                 }
             }
         }
     }
-
 
 
     private void processCartThenPush(String shopper, Cart cart, String orderID, DatabaseReference db){
@@ -84,9 +83,9 @@ public class CartModel extends DatabaseModel {
 
         //delete cart from shopper
         db.child("Shopper-UserList").child(shopper).child("cart").setValue(null);
-
-
     }
+
+
     public void pushCartToOrderList(String shoppername){
         DatabaseReference db = fdb.getReference();
         String orderID = db.push().getKey();
@@ -96,8 +95,5 @@ public class CartModel extends DatabaseModel {
         //Give reference to order to shopper
         db.child("Shopper-UserList").child(shoppername)
                 .child("orders").child(orderID).setValue(0);
-
     }
-
-
 }

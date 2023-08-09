@@ -53,7 +53,6 @@ public class CartAdapter extends  RecyclerView.Adapter<CartAdapter.MyViewHolder>
         holder.ProductName.setText(product.getProductName());
         holder.ProductQuantity.setText(product.getProductQuantity());
         holder.ProductPrice.setText(product.getProductPrice());
-        Log.d("CartAdapter", "Product list size: " + productList.size());
 
         holder.itemView.findViewById(R.id.cartEditButton).setOnClickListener(new View.OnClickListener() {
             @Override

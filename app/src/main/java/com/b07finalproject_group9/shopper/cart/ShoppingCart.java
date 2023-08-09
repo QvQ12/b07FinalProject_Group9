@@ -28,6 +28,8 @@ public class ShoppingCart extends Fragment {
     Button edit;
     CartAdapter cartAdapter;
     ArrayList<ProductInfo> productList;
+    private CartModel cm = new CartModel();
+
 
     private void processCart(Cart cart){
         for(String store : cart.CartContent.keySet()){
@@ -35,7 +37,7 @@ public class ShoppingCart extends Fragment {
                 processItem(store, productID, cart.CartContent.get(store).get(productID));
             }
         }
-
+        cm.validateCart(cart, MainActivity.currUser.getUsername());
     }
 
     private void processItem(String storename, String productID, int quantity){
@@ -69,7 +71,9 @@ public class ShoppingCart extends Fragment {
         productList = new ArrayList<>();
         cartAdapter = new CartAdapter(getContext(), productList,
                 getActivity().getSupportFragmentManager());
-        CartModel cm = new CartModel();
+
+
+
         cm.getUserCart(MainActivity.currUser.getUsername()).thenAccept(res -> processCart(res));
 
 
