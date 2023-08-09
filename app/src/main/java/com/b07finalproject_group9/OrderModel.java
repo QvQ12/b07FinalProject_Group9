@@ -46,7 +46,8 @@ public class OrderModel extends DatabaseModel{
     }
 
     public CompletableFuture<ArrayList<String>> getOrderKeysFromStoreOwner(String username){
-        DatabaseReference db = fdb.getReference("StoreOwner-UserList").child(username).child();
+        DatabaseReference db = fdb.getReference("StoreOwner-UserList")
+                .child(username).child("cart");
         CompletableFuture<ArrayList<String>> res = new CompletableFuture<>();
         db.addValueEventListener(new ValueEventListener() {
 
