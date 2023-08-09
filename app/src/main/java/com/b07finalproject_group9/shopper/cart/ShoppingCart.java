@@ -77,7 +77,6 @@ public class ShoppingCart extends Fragment {
         cm.getUserCart(MainActivity.currUser.getUsername()).thenAccept(res -> processCart(res));
 
 
-
         returnToMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

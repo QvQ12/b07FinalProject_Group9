@@ -5,85 +5,62 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+
     <Button
-        android:id="@+id/button"
+        android:id="@+id/menu"
         android:layout_width="100dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="45dp"
         android:text="@string/return_to_main"
+        app:layout_constraintBottom_toTopOf="@id/slogan_category"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/slogan_category"
-        android:layout_marginTop="45dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/slogan_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
         android:text="Please Select Store"
         android:textAlignment="center"
         android:textSize="26sp"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        android:layout_marginTop="45dp" />
+        app:layout_constraintBottom_toTopOf="@+id/storeList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/storeList"
         android:layout_width="409dp"
-        android:layout_height="306dp"
+        android:layout_height="400dp"
+        android:background="#DFD6EF"
+        android:fadeScrollbars="true"
+        android:scrollbars="vertical"
+        app:layoutManager="LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.408" />
-
-    <ImageView
-        android:id="@+id/shopping_cart"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="280dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/cart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ready_for_pick_up"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/storeList"
-        app:layout_constraintVertical_bias="0.948"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <ImageView
-        android:id="@+id/ready_for_pick_up"
-        android:layout_width="49dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="123dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/nav_cart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/storeList"
-        app:layout_constraintVertical_bias="0.357"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
 
     <TextView
         android:id="@+id/OrderTextView"
         android:layout_width="49dp"
         android:layout_height="19dp"
-        android:layout_marginStart="280dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="16dp"
         android:text="Order"
         android:textAlignment="center"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/ready_for_pick_up"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/CartTextView"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/downarrow"
         app:layout_constraintTop_toBottomOf="@+id/storeList" />
 
     <TextView
@@ -91,22 +68,42 @@
         android:layout_width="50dp"
         android:layout_height="20dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="108dp"
         android:text="Cart"
         android:textAlignment="center"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/shopping_cart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/downarrow"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/storeList" />
+        app:layout_constraintTop_toBottomOf="@+id/storeList"
+        app:layout_constraintVertical_bias="0.301" />
 
     <Button
         android:id="@+id/CartButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@+id/shopping_cart"
-        app:layout_constraintEnd_toEndOf="@+id/shopping_cart"
-        app:layout_constraintStart_toStartOf="@+id/shopping_cart"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/cart"
+        android:text=".."
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/downarrow"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CartTextView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="cart"
+        android:src="@drawable/cart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/downarrow"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CartTextView"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -114,12 +111,60 @@
         android:id="@+id/OrderPageButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/nav_cart"
+        android:text=".."
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/downarrow"
+        app:layout_constraintTop_toBottomOf="@+id/OrderTextView"
+        app:layout_constraintVertical_bias="0.012" />
 
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@+id/ready_for_pick_up"
-        app:layout_constraintEnd_toEndOf="@+id/ready_for_pick_up"
-        app:layout_constraintStart_toStartOf="@+id/ready_for_pick_up"
-        app:layout_constraintTop_toTopOf="@+id/ready_for_pick_up" />
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="order"
+        android:src="@drawable/nav_cart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/downarrow"
+        app:layout_constraintTop_toBottomOf="@+id/OrderTextView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/downarrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/storeList"
+        app:layout_constraintVertical_bias="0.736"
+        app:srcCompat="@android:drawable/arrow_down_float" />
+
+    <ImageView
+        android:id="@+id/uparrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/storeList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slogan_category"
+        app:layout_constraintVertical_bias="0.47"
+        app:srcCompat="@android:drawable/arrow_up_float" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

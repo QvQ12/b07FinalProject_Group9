@@ -1,5 +1,6 @@
 package com.b07finalproject_group9.shopper.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +13,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.AppCompatImageButton;
 
 
+import com.b07finalproject_group9.MainActivity;
 import com.b07finalproject_group9.databinding.FragmentDashboardBinding;
 import com.b07finalproject_group9.R;
+import com.b07finalproject_group9.login.ShopperLoginFragment;
 import com.b07finalproject_group9.objects.Store;
 import com.b07finalproject_group9.owner.ui.dashboard.AddNewProduct;
 import com.b07finalproject_group9.shopper.ShopperModel;
@@ -33,7 +37,7 @@ public class ShopperDashboardFragment extends Fragment {
     Button orderPage;
     RecyclerView recyclerView;
     com.b07finalproject_group9.shopper.dashboard.StoreAdapter StoreAdapter; //create a new adapter for that later
-    ArrayList<Store> storeNames;//make the class store, jsut a store name
+    ArrayList<Store> storeNames;//make the class store, just a store name
     public ShopperDashboardFragment(){}
     private void processStoreNames(ArrayList<String> stores){
         for(int i = 0; i < stores.size(); i++){
@@ -61,7 +65,7 @@ public class ShopperDashboardFragment extends Fragment {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.main_login_redirect, someFragment).commit();
                 transaction.addToBackStack(null);
-                Toast.makeText(getActivity(), "going to cart : ",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "going to cart : ",Toast.LENGTH_SHORT).show();
             }
         });
         orderPage = view.findViewById(R.id.OrderPageButton);
@@ -72,9 +76,19 @@ public class ShopperDashboardFragment extends Fragment {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.main_login_redirect, someFragment).commit();
                 transaction.addToBackStack(null);
-                Toast.makeText(getActivity(), "going to orders edited: ",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "going to orders edited: ",Toast.LENGTH_SHORT).show();
             }
         });
+
+        Button menu_button = view.findViewById(R.id.menu);
+        menu_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ShopperDashboardFragment.this.getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         return view;
     }

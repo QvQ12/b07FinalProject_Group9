@@ -70,7 +70,6 @@ public class CartModel extends DatabaseModel {
         }
     }
 
-
     private void processCartThenPush(String shopper, Cart cart, String orderID, DatabaseReference db){
         //Copy cart to global orders list
         for(String store : cart.CartContent.keySet()){
