@@ -37,12 +37,17 @@ public class StoreOwnerInventoryModel extends DatabaseModel {
 
         return productID;
     }
-
+    private boolean isValidFirebaseKey(String key) {
+        return key != null && key.matches("^[a-zA-Z0-9_-]+$");
+    }
 
     public void editProductInventory(String store_username, String productID,
-                                     String new_product_name, double new_price, int new_quantity){
+                                     String new_product_name, double new_price, int new_quantity, String description){
         /* Replaces values in an existing product in
-            StoreOwner-UserList/store_username/Inventory/productID          */
+            StoreOwner-UserList/store_username/Inventory/productID          */if (!isValidFirebaseKey(productID)) {
+            throw new IllegalArgumentException("Invalid productID: " + productID);
+        }
+
 
         DatabaseReference db = fdb.getReference("StoreOwner-UserList/"
                 + store_username +"/Inventory/" + productID);
@@ -50,6 +55,8 @@ public class StoreOwnerInventoryModel extends DatabaseModel {
         db.child("product_name").setValue(new_product_name);
         db.child("price").setValue(Double.toString(new_price));
         db.child("quantity").setValue(Integer.toString(new_quantity));
+        db.child("description").setValue(description);
+
 
     }
 
@@ -81,8 +88,7 @@ public class StoreOwnerInventoryModel extends DatabaseModel {
         return result;
     }
 
-    public CompletableFuture<HashMap<String, String>> getSpecificProduct(String productID,
-                                                                         String store_name){
+    public CompletableFuture<HashMap<String, String>> getSpecificProduct(String productID, String store_name){
         /* Returns a CompletableFuture holding a Hashmap with the details of a product.
          */
         CompletableFuture<HashMap<String,String>> result = new CompletableFuture<>();
@@ -109,6 +115,9 @@ public class StoreOwnerInventoryModel extends DatabaseModel {
 
         return result;
     }
+
+
+
 
 
 }
