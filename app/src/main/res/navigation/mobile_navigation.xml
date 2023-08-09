@@ -20,6 +20,6 @@
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.b07finalproject_group9.owner.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_orders"
         tools:layout="@layout/fragment_notifications" />
 </navigation>
