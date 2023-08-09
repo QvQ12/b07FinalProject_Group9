@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">B07Project Mall</string>
+    <string name="shopperlogin">Shopper Login</string>
+    <string name="storename">storename:</string>
+    <string name="username">username:</string>
+    <string name="password">password:</string>
+    <string name="login">Login</string>
+    <string name="ownerlogin">Owner Login</string>
+    <string name="shoppersignup">Shopper Signup</string>
+    <string name="signup">Signup</string>
+    <string name="ownersignup">Owner Signup</string>
+    <string name="return_to_main">Menu</string>
+    <string name="welcome">Welcome</string>
+    <string name="enter_your_storename">enter your storename</string>
+    <string name="enter_your_password">enter your password</string>
+    <string name="enter_your_username">enter your username</string>
+    <string-array name="login_signup_choice">
+        <item>shopper login</item>
+        <item>shopper signup</item>
+        <item>owner login</item>
+        <item>owner signup</item>
+    </string-array>
+
+
+
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="welcome_home">Welcome Home!\n Dear:</string>
+    <string name="add_new_product">Add New Product</string>
+    <string name="product">PRODUCT</string>
+    <string name="title_activity_product_details">Leanback ProductDetails</string>
+    <string name="browse_title">Videos by Your Company</string>
+    <string name="related_movies">Related Videos</string>
+    <string name="grid_view">Grid View</string>
+    <string name="error_fragment">Error Fragment</string>
+    <string name="personal_settings">Personal Settings</string>
+    <string name="watch_trailer_1">Watch trailer</string>
+    <string name="watch_trailer_2">FREE</string>
+    <string name="rent_1">Rent By Day</string>
+    <string name="rent_2">From $1.99</string>
+    <string name="buy_1">Buy and Own</string>
+    <string name="buy_2">AT $9.99</string>
+    <string name="movie">Movie</string>
+
+
+
+    <!-- Error messages -->
+    <string name="error_fragment_message">An error occurred</string>
+    <string name="dismiss_error">Dismiss</string>
+
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_products">Proucts</string>
+    <string name="title_orders">Orders</string>
+    <string name="add_existing_product">Add Existing Product</string>
+    <string name="product_name">Name</string>
+    <string name="Quantity">Quantity</string>
+    <string name="enter_product_name">Enter Product Name</string>
+    <string name="enter_quantity">Enter Quantity Added</string>
+    <string name="product_price">Price</string>
+    <string name="enter_price">Enter Product Price</string>
+    <string name="product_description">Description</string>
+</resources>

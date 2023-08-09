@@ -1,0 +1,98 @@
+Here is the text document for us to discuss ANY issues we may face.
+Feel free to type anything here to talk about it.
+
+(need discussion) Question 1: How about we use this as a way of group communication, and check this document at least once every day?
+(Response 1)
+
+Couple things:
+    1) I think we need a better way to communicate with each other like
+    wechat(my wechat id is AlvinCao88 if we go with this), or even discord,
+    lets decide on something. Because if there is an fast changes we might 
+    need something better than this.
+    2) I also added a potential design we could use would love some
+    feedback <3.
+    3) I'm not to sure, if all the members are added in the git and jira. 
+    4) we should find a time to meet up to discuss about some stuff like 
+    the design, color scheme, etc.
+
+(Follow-up 1)
+    1) Agree, I have created a WeChat group if we prefer WeChat.
+
+Class Annoucement
+    - weekly meetings
+    - contribution statement for each member
+    - easy to navigate app
+
+July 24th meeting
+FLOWMAP OF THE APP
+    - store owner/shopper
+    - login/signup
+    - for store owner:
+        - 2 pages from the menubar: 1) products 2) orders (to see status)
+    - for shopper:
+        - 3 pages from the menubar: 1) products 2) cart 3) orders
+TODO:
+    - login page 
+    - connect to firebase 
+
+July 25th meeting
+Talked about:
+    - created a working firebase database, 
+    - linking the firebase with the login page.
+    - design for the owner and shopper's page.
+Obstacle from the last meeting:
+    - step up the firebase (had a lot of trouble with gradle and using firebase)
+    - linking the login and signup pages together.
+Completed:
+    - outline of the login page (by Cristal)
+    - setup firebase (by Miko and Alvin)
+TODO - next meeting 28th July: 
+    - design of the shopper's page (assigned to Raymond)
+    - design of the owners' page (assigned to Jenna)
+    - working further into the design of the login page (assigned to Cristal) and
+    - Connecting the firebase and other features with the login page (Assigned to Miko and Alvin)
+
+July 28th Meeting
+Talked about:
+    - general project outline like linking and getting the orders and products to connect.
+    - further discussion on design for the owner and shopper's page.
+Obstacle from the last meeting:
+    - design conflicts.
+    - linking the pages together.
+    - pushing and cloning git. 
+Completed:
+    - outline for owner's page including the order page and add page (by Jenna)
+    - outline for shopper's page including the main page and linked to cart and ready to pick up (by Raymond)
+    - added more features to the login pages (by Cristal)
+    - way to write and read to firebase, the structure of data to the firebase (by Miko and Alvin)
+TODO - next meeting 31st July:
+    - Work on the carts and read to pickup pages  of the shopper's page (assigned to Raymond)
+    - Work on adding to products and ordering pages of the owners' page (assigned to Jenna)
+    - Connecting the owner's and shopper's pages from the login page (assigned to Cristal) and
+    - Linking the login pages and working further on the structure of the firebase (Assigned to Miko and Alvin)
+
+July 31st Meeting
+Talked about:
+    - a general overview of the project.
+    - explained how the ordering of items should work
+Obstacles from the last meeting:
+    - linking to firebase (Mainly Orders)
+    - convert activity to fragments
+Completed:
+    - part of the design of the owners' page (by Jenna)
+    - part of the design of the shopper's page (by Raymond)
+    - Log-in and sign-up models are completed (by Miko)
+    - log-in and sign-up design are completed (by Miko and Cristal)
+    - adding the structure of the order list (by Alvin)
+TODO - next meeting 2nd August:
+    - Link the login and sign up with the shopper and owners' page. (assigned to everyone) 
+    - convert activity to fragments. (by Cristal and Miko)
+    - Add products from the owner's page and (assigned to Jenna)
+    - display the products on the shopper's page. (assigned to Raymond)
+    - working on the further on orders. (assign to Alvin)
+    
+
+
+
+
+
