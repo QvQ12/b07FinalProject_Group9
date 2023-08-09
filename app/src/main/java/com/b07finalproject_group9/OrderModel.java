@@ -106,7 +106,7 @@ public class OrderModel extends DatabaseModel{
     public CompletableFuture<ArrayList<String>> getProductIDbyOrder(String orderID){
         CompletableFuture<ArrayList<String>> res = new CompletableFuture<>();
 
-        DatabaseReference db = fdb.getReference("Global-OrderList");
+        DatabaseReference db = fdb.getReference("Global-OrderList").child(orderID);
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

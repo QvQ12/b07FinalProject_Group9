@@ -45,14 +45,11 @@ public class StatusPage extends Fragment {
 
     }
     private void addToProductList(HashMap<String, String> map, String prodID){
-
         ProductInfo p = new ProductInfo(map, prodID);
         productList.add(p);
         recyclerView.setAdapter(statusAdapter);
     }
     private void processListOfProductID(ArrayList<String> list){
-
-        if(list == null) return;
         for(int i = 0; i < list.size(); i++){
             String prodID = list.get(i);
             shm.getStoreBasedOnProductID(list.get(i))
@@ -70,7 +67,16 @@ public class StatusPage extends Fragment {
         productList = new ArrayList<>();
         statusAdapter = new StatusAdapter(getContext(), productList,getActivity().getSupportFragmentManager());
         om.getProductIDbyOrder(key).thenAccept(res -> processListOfProductID(res));
-//        om.getProductIDbyOrder(key).thenAccept(res -> Log.i("ORDER", ));
+        om.getProductIDbyOrder(key).thenAccept(res -> Log.i("ORDER", res.toString() ));
+        Button back = view.findViewById(R.id.back_button);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment f = new OrderDashboard();
+                FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+                ft.replace(R.id.main_login_redirect, f).commit();
+            }
+        });
 
         Button back = view.findViewById(R.id.back_button);
         back.setOnClickListener(new View.OnClickListener() {
