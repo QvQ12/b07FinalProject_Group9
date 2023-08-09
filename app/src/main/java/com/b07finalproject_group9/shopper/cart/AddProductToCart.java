@@ -13,6 +13,7 @@ import android.widget.EditText;
 
 import com.b07finalproject_group9.MainActivity;
 import com.b07finalproject_group9.R;
+import com.b07finalproject_group9.shopper.dashboard.ShopperDashboardFragment;
 import com.b07finalproject_group9.shopper.dashboard.ShopperProductPage;
 
 
@@ -35,16 +36,45 @@ public class AddProductToCart extends Fragment {
         String currStoreName = ShopperProductPage.storeName;
         CartModel cm = new CartModel();
 
-
         AddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int quant = Integer.parseInt(quantity.getText().toString());
-                cm.writeCartItem(MainActivity.currUser.getUsername(), storeName, productID, quant);
-                Fragment someFragment = new ShoppingCart();
-                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-                transaction.replace(R.id.main_login_redirect, someFragment).commit();
-                transaction.addToBackStack(null);
+//                int quant = Integer.parseInt(quantity.getText().toString());
+//                cm.writeCartItem(MainActivity.currUser.getUsername(), storeName, productID, quant);
+//                Fragment someFragment = new ShoppingCart();
+//                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+//                transaction.replace(R.id.main_login_redirect, someFragment).commit();
+//                transaction.addToBackStack(null);
+                String input = quantity.getText().toString().trim();
+
+                if (input.isEmpty()) {
+                    // Empty input, show a warning
+                    quantity.setError("Please enter a quantity");
+                    return;
+                }
+
+                try {
+                    int quant = Integer.parseInt(input);
+                    // Input is a valid number
+                    cm.writeCartItem(MainActivity.currUser.getUsername(), storeName, productID, quant);
+                    Fragment someFragment = new ShoppingCart();
+                    FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                    transaction.replace(R.id.main_login_redirect, someFragment).commit();
+                    transaction.addToBackStack(null);
+                } catch (NumberFormatException e) {
+                    // Input is not a valid number, show a warning
+                    quantity.setError("Please enter a valid quantity");
+                }
+            }
+        });
+
+        Button cancel = view.findViewById(R.id.back_button);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment f = new ShopperDashboardFragment();
+                FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+                ft.replace(R.id.main_login_redirect, f).commit();
             }
         });
 
