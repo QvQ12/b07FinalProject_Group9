@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,7 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.b07finalproject_group9.databinding.FragmentDashboardBinding;
 import com.b07finalproject_group9.R;
 import com.b07finalproject_group9.objects.Store;
+import com.b07finalproject_group9.owner.ui.dashboard.AddNewProduct;
 import com.b07finalproject_group9.shopper.ShopperModel;
+import com.b07finalproject_group9.shopper.cart.ShoppingCart;
 import com.b07finalproject_group9.shopper.dashboard.StoreAdapter;
 
 
@@ -53,6 +56,10 @@ public class ShopperDashboardFragment extends Fragment {
         cartPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Fragment someFragment = new ShoppingCart();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_login_redirect, someFragment).commit();
+                transaction.addToBackStack(null);
                 Toast.makeText(getActivity(), "going to cart : ",Toast.LENGTH_SHORT).show();
             }
         });
@@ -60,7 +67,10 @@ public class ShopperDashboardFragment extends Fragment {
         orderPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+//                Fragment someFragment = new AddNewProduct();
+//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.fragment_container_view, someFragment).commit();
+//                transaction.addToBackStack(null);
                 Toast.makeText(getActivity(), "going to orders edited: ",Toast.LENGTH_SHORT).show();
             }
         });
