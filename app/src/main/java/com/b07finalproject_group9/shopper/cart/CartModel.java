@@ -9,6 +9,7 @@ import com.b07finalproject_group9.DatabaseModel;
 import com.b07finalproject_group9.objects.Cart;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.color.utilities.DislikeAnalyzer;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,14 +26,8 @@ public class CartModel extends DatabaseModel {
         DatabaseReference db = fdb.getReference("Shopper-UserList/" + shoppername
             + "/cart/" + storename + "/" + prod_key);
         db.setValue(quantity);
-    }
 
-    public void removeCartItem(String shoppername, String storename,
-                       String prod_key){
-        /* Removes a product key to cart with a quantity quantity. */
-        DatabaseReference db = fdb.getReference("Shopper-UserList/" + shoppername
-                + "/cart/" + storename + "/" + prod_key);
-        db.removeValue();
+        getUserCart(shoppername).thenAccept(res->validateCart(res, shoppername));
     }
 
 
@@ -62,6 +57,20 @@ public class CartModel extends DatabaseModel {
         });
         return res;
     }
+
+
+    private void validateCart(Cart cart, String shopper){
+        for(String store : cart.CartContent.keySet()){
+            for(String item : cart.CartContent.get(store).keySet()){
+                if(cart.CartContent.get(store).get(item) < 1){
+                    DatabaseReference db = fdb.getReference("StoreOwner-UserList");
+                    db.child(shopper).child("cart").child(store).child(item).removeValue();
+                }
+            }
+        }
+    }
+
+
 
 
 
