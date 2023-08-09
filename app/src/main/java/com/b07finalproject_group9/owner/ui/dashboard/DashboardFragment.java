@@ -29,12 +29,8 @@ import java.util.HashMap;
 
 public class DashboardFragment extends Fragment {
 
-
-
     private FragmentDashboardBinding binding;
     Button add;
-    Button edit;
-
     RecyclerView recyclerView;
     StoreOwnerInventoryModel sm = new StoreOwnerInventoryModel();
     ProductAdapter productAdapter;
@@ -43,13 +39,16 @@ public class DashboardFragment extends Fragment {
 
     private void processInventory(ArrayList<String> res){
         for(int i = 0; i < res.size(); i++){
-            sm.getSpecificProduct(res.get(i), MainActivity.currUser.getUsername()).
+            String productId = res.get(i);
+            sm.getSpecificProduct(productId, MainActivity.currUser.getUsername()).
                     thenAccept(prod -> addItemToLocalInventory(storeInventory,
-                                                                new ProductInfo(prod)));
+                                                                new ProductInfo(prod, productId)));
+
         }
     }
 
     private void addItemToLocalInventory(ArrayList<ProductInfo> inventory, ProductInfo prod){
+
         inventory.add(prod);
         recyclerView.setAdapter(productAdapter);
     }
@@ -78,7 +77,6 @@ public class DashboardFragment extends Fragment {
 
         sm.getProductInventory(MainActivity.currUser.getUsername()).
                 thenAccept(res-> processInventory(res));
-
 
         return view;
     }
