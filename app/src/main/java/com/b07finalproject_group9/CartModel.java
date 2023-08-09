@@ -30,10 +30,9 @@ public class CartModel extends DatabaseModel{
     }
 
 
-
     public CompletableFuture<Cart> getUserCart(String shoppername){
         /* Returns a CompletableFuture for a Cart corresponding to the specified user's cart */
-        DatabaseReference db = fdb.getReference("Shopper-UserList" + shoppername + "/cart/");
+        DatabaseReference db = fdb.getReference("Shopper-UserList" + shoppername + "/cart");
         CompletableFuture<Cart> res = new CompletableFuture<>();
         db.addValueEventListener(new ValueEventListener() {
             @Override

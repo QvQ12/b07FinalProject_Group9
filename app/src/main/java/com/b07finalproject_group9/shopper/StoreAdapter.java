@@ -15,7 +15,6 @@ import com.b07finalproject_group9.objects.ProductInfo;
 import java.util.ArrayList;
 
 public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.MyViewHolder>{
-
     Context context;
 
     ArrayList<Store> storeName;
