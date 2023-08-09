@@ -1,4 +1,5 @@
-# Finished_login ReadMe
-( Finished all things of login and signup. )
-SEE the FILE NAME "b07FinalProject_Group9_updateAug1st"
-This File is the complete version of the login and signup pages.
+# loginModule_MVP&JUnitTests_Finished 
+( Finished all things of login Module including all stuff in the "Project - Testing Instructions")
+See the FILE NAME "TEST_MVP_LOGIN MODULE"
+
+kindly remind: Please don't hesitate to contact me (phone call preferred) if there have any questions!
