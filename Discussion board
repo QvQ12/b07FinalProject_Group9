@@ -114,4 +114,5 @@ August 9th Meeting:
 Completed:
     - UI design, Button linkages, Order Status on Shopper (By Jenna)
     - Shopping cart on Shopper, Firebase linkage on order&products (Miko)
-    - Order list on Shopper (Alvin)
+    - Order list , display info of product on Shopper (Alvin)
+    - Norification (order) list on Owner (Raymond)
