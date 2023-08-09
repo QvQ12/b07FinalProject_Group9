@@ -1,4 +1,2 @@
-# Finished_login ReadMe
-( Finished all things of login and signup. )
-SEE the FILE NAME "b07FinalProject_Group9_updateAug1st"
-This File is the complete version of the login and signup pages.
+# 2023 Summer CSCB07 Final Project
+Discussion Board file details progress of completing the project.
