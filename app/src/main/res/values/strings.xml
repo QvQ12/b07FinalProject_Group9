@@ -59,4 +59,5 @@
     <string name="product_price">Price</string>
     <string name="enter_price">Enter Product Price</string>
     <string name="product_description">Description</string>
+    <string name="your_items_from_order">Your items from order:</string>
 </resources>

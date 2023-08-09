@@ -2,6 +2,7 @@ package com.b07finalproject_group9;
 
 import android.provider.ContactsContract;
 import android.util.Log;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -16,6 +17,7 @@ import java.util.HashMap;
 import java.util.concurrent.CompletableFuture;
 
 public class OrderModel extends DatabaseModel{
+
     public CompletableFuture<ArrayList<String>> getOrderKeysFromShopper(String username){
         DatabaseReference db = fdb.getReference("Shopper-UserList").child(username)
                 .child("orders");
@@ -79,20 +81,23 @@ public class OrderModel extends DatabaseModel{
                 child(storename).child("STATUS").setValue(status);
     }
 
-    CompletableFuture<Boolean> getOrderStatusForShopper(String orderKey){
+    public CompletableFuture<Boolean> getOrderStatusForShopper(String orderKey){
         /* RETURNS TRUE if all  store statuses are TRUE in Global-OrderList/orderKey  */
-        DatabaseReference db = fdb.getReference("Global-OrderList");
+        DatabaseReference db = fdb.getReference("Global-OrderList").child(orderKey);
         CompletableFuture<Boolean> res = new CompletableFuture<>();
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot store : snapshot.getChildren()){
-                    if(!((Boolean) (store.child("STATUS").getValue()))){
+                    String storeStatus = store.child("STATUS").getValue().toString();
+                    Log.i("completed", storeStatus);
+                    if(storeStatus.equals("0")) {
                         res.complete(false);
                         return;
                     }
-                    res.complete(true);
+
                 }
+                res.complete(true);
             }
 
             @Override
