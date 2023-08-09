@@ -3,6 +3,7 @@ package com.b07finalproject_group9.shopper.cart;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.b07finalproject_group9.DatabaseModel;
 import com.b07finalproject_group9.objects.Cart;
@@ -63,7 +64,8 @@ public class CartModel extends DatabaseModel {
     }
 
 
-    private void processCartThenPush(Cart cart, String orderID, DatabaseReference db){
+
+    private void processCartThenPush(String shopper, Cart cart, String orderID, DatabaseReference db){
         //Copy cart to global orders list
         for(String store : cart.CartContent.keySet()){
             cart.CartContent.get(store).put("STATUS", 0);
@@ -73,12 +75,16 @@ public class CartModel extends DatabaseModel {
         }
         db.child("Global-OrderList").child(orderID).setValue(cart.CartContent);
 
+        //delete cart from shopper
+        db.child("Shopper-UserList").child(shopper).child("cart").setValue(null);
+
 
     }
     public void pushCartToOrderList(String shoppername){
         DatabaseReference db = fdb.getReference();
         String orderID = db.push().getKey();
-        getUserCart(shoppername).thenAccept(res-> processCartThenPush(res, orderID, db));
+        getUserCart(shoppername).thenAccept(res->
+                processCartThenPush(shoppername, res, orderID, db));
 
         //Give reference to order to shopper
         db.child("Shopper-UserList").child(shoppername)
