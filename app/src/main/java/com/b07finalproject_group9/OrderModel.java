@@ -17,7 +17,7 @@ import java.util.concurrent.CompletableFuture;
 public class OrderModel extends DatabaseModel{
     public CompletableFuture<ArrayList<String>> getOrderKeysFromShopper(String username){
         DatabaseReference db = fdb.getReference("Shopper-UserList").child(username)
-                .child("cart");
+                .child("orders");
         CompletableFuture<ArrayList<String>> res = new CompletableFuture<>();
         db.addValueEventListener(new ValueEventListener() {
 
@@ -78,7 +78,7 @@ public class OrderModel extends DatabaseModel{
                 child(storename).child("STATUS").setValue(status);
     }
 
-     CompletableFuture<Boolean> getOrderStatusForShopper(String orderKey){
+    CompletableFuture<Boolean> getOrderStatusForShopper(String orderKey){
         /* RETURNS TRUE if all  store statuses are TRUE in Global-OrderList/orderKey  */
         DatabaseReference db = fdb.getReference("Global-OrderList");
         CompletableFuture<Boolean> res = new CompletableFuture<>();
@@ -99,6 +99,32 @@ public class OrderModel extends DatabaseModel{
                 res.complete(false);
             }
         });
+        return res;
+    }
+
+    public CompletableFuture<ArrayList<String>> getProductIDbyOrder(String orderID){
+        CompletableFuture<ArrayList<String>> res = new CompletableFuture<>();
+
+        DatabaseReference db = fdb.getReference("Global-OrderList");
+        db.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<String> list = new ArrayList<>();
+
+                for(DataSnapshot child : snapshot.getChildren()){
+                    for(DataSnapshot ID : child.getChildren()){
+                        if(ID.getKey().equals("STATUS")){list.add(ID.getKey());}
+                    }
+                }
+                res.complete(list);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                res.complete(null);
+            }
+        });
+
         return res;
     }
 
