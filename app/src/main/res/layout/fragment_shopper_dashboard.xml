@@ -141,26 +141,24 @@
 
     <ImageView
         android:id="@+id/downarrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="21dp"
+        android:layout_height="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/storeList"
-        app:layout_constraintVertical_bias="0.78"
+        app:layout_constraintVertical_bias="0.744"
         app:srcCompat="@android:drawable/arrow_down_float" />
 
     <ImageView
         android:id="@+id/uparrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="245dp"
+        android:layout_height="13dp"
         app:layout_constraintBottom_toTopOf="@+id/storeList"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/slogan_category"
-        app:layout_constraintVertical_bias="0.47"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@android:drawable/arrow_up_float" />
 
     <androidx.constraintlayout.widget.Barrier
