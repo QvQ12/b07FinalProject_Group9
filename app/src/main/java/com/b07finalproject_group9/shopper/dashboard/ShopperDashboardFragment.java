@@ -76,7 +76,6 @@ public class ShopperDashboardFragment extends Fragment {
             }
         });
 
-
         return view;
     }
     @Override
