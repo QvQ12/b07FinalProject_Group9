@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context="com.b07finalproject_group9.shopper.TshirtsProduct">
+    android:background="@color/white">
 
     <!-- Shopping Cart Button -->
     <ImageView
@@ -44,14 +43,5 @@
         app:layout_constraintVertical_bias="0.408" />
 
     <!-- Next Page Button -->
-    <Button
-        android:id="@+id/next_page_button"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:text="Next Page"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

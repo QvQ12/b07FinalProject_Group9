@@ -73,8 +73,6 @@ public class DashboardFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         storeInventory = new ArrayList<>();
         productAdapter = new ProductAdapter(getContext(), storeInventory,getActivity().getSupportFragmentManager());
-
-
         sm.getProductInventory(MainActivity.currUser.getUsername()).
                 thenAccept(res-> processInventory(res));
 
