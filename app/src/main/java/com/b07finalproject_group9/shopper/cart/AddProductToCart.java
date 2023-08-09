@@ -39,12 +39,6 @@ public class AddProductToCart extends Fragment {
         AddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                int quant = Integer.parseInt(quantity.getText().toString());
-//                cm.writeCartItem(MainActivity.currUser.getUsername(), storeName, productID, quant);
-//                Fragment someFragment = new ShoppingCart();
-//                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-//                transaction.replace(R.id.main_login_redirect, someFragment).commit();
-//                transaction.addToBackStack(null);
                 String input = quantity.getText().toString().trim();
 
                 if (input.isEmpty()) {
