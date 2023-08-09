@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -29,6 +30,8 @@ public class ShoppingCart extends Fragment {
     CartAdapter cartAdapter;
     ArrayList<ProductInfo> productList;
     private CartModel cm = new CartModel();
+    private StoreOwnerInventoryModel sm = new StoreOwnerInventoryModel();
+
 
 
     private void processCart(Cart cart){
@@ -41,8 +44,8 @@ public class ShoppingCart extends Fragment {
     }
 
     private void processItem(String storename, String productID, int quantity){
-        StoreOwnerInventoryModel sm = new StoreOwnerInventoryModel();
-        sm.getSpecificProduct(productID, storename).thenAccept(res -> addNewProductToList(res, quantity));
+        sm.getSpecificProduct(productID, storename)
+                .thenAccept(res -> addNewProductToList(res, quantity));
 
     }
 
@@ -59,6 +62,43 @@ public class ShoppingCart extends Fragment {
     }
 
 
+
+    private void switchPagePushCartSuccess(){
+        cm.pushCartToOrderList(MainActivity.currUser.getUsername());
+        Fragment f = new ShopperDashboardFragment();
+        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+        ft.replace(R.id.main_login_redirect, f).commit();
+        Toast.makeText(getContext() , "Your order has been placed!",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    private void switchPagePushCartFailure(){
+        Fragment f = new ShoppingCart();
+        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+        ft.replace(R.id.main_login_redirect, f).commit();
+        Toast.makeText(getContext(), "You have more items in your cart, than the store has..",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    private void convertCartToOrder(Cart cart){
+        for(String store : cart.CartContent.keySet()){
+            for(String item : cart.CartContent.get(store).keySet()){
+                int wanted_amount = cart.CartContent.get(store).get(item);
+                sm.getSpecificProduct(item, store)
+                            .thenAccept(map -> cartDecision(cart, map, store));
+            }
+        }
+    }
+
+    private void cartDecision(Cart cart, HashMap<String, String> map, String store){
+        if(Integer.parseInt(map.get("quantity"))
+                <  cart.CartContent.get(store).get(map.get("ProductID"))){
+            switchPagePushCartFailure();
+            return;
+        }
+        switchPagePushCartSuccess();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -71,7 +111,6 @@ public class ShoppingCart extends Fragment {
         productList = new ArrayList<>();
         cartAdapter = new CartAdapter(getContext(), productList,
                 getActivity().getSupportFragmentManager());
-
 
 
         cm.getUserCart(MainActivity.currUser.getUsername()).thenAccept(res -> processCart(res));
@@ -90,10 +129,8 @@ public class ShoppingCart extends Fragment {
         payOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cm.pushCartToOrderList(MainActivity.currUser.getUsername());
-                Fragment f = new ShopperDashboardFragment();
-                FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-                ft.replace(R.id.main_login_redirect, f).commit();;
+                cm.getUserCart(MainActivity.currUser.getUsername()).thenAccept(res ->
+                        convertCartToOrder(res));
             }
         });
         return view;

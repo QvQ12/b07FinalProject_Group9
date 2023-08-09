@@ -66,7 +66,7 @@ public class AddProductToCart extends Fragment {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment f = new ShopperDashboardFragment();
+                Fragment f = new ShopperProductPage();
                 FragmentTransaction ft = getParentFragmentManager().beginTransaction();
                 ft.replace(R.id.main_login_redirect, f).commit();
             }
