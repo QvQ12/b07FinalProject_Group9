@@ -71,28 +71,27 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     ArrayList<String> makePriceString = new ArrayList<>();
 
 
-    private void processName(String ID){
+    private void processName(TextView n, TextView q, TextView p,
+                             HashMap<String, String> res, StringBuilder name,
+                             StringBuilder quantity, StringBuilder price){
+        name = name.append(res.get("product_name")+ ", ");
+        quantity = quantity.append(res.get("quantity")+ ", ");
+        price = price.append("$"+res.get("price")+ ", ");
+
+        n.setText(name.toString().substring(0, name.length() - 2));
+        q.setText(quantity.toString().substring(0, quantity.length() - 2));
+        p.setText(price.toString().substring(0, price.length() - 2));
+
+
 
     }
     private void processID(TextView n, TextView q, TextView p, ArrayList<String> ids){
+        StringBuilder name = new StringBuilder();
+        StringBuilder price = new StringBuilder();
+        StringBuilder quantity = new StringBuilder();
         for(int i = 0; i < ids.size(); i++){
-                String name = new String();
-                String price = new String();
-                String quantity = new String();
-
                 sm.getSpecificProduct(ids.get(i), MainActivity.currUser.getUsername())
-                        .thenAccept(res->{
-                            String add_name = res.get("product_name");
-                            String add_price = res.get("price");
-                            String add_quantity = res.get("quantity");
-
-                            name.concat(add_name+", ");
-                            price.concat(add_price+", ");
-                            quantity.concat(add_quantity+", ");
-                            n.setText(name);
-                            p.setText(price);
-                            q.setText(quantity);
-                        });
+                        .thenAccept(res->processName(n, q, p, res, name, quantity, price));
 
             }
         }
