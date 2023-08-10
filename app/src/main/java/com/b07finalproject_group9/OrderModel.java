@@ -96,7 +96,6 @@ public class OrderModel extends DatabaseModel{
                         res.complete(false);
                         return;
                     }
-
                 }
                 res.complete(true);
             }
@@ -111,22 +110,30 @@ public class OrderModel extends DatabaseModel{
 
     public void setStatusOwner(String orderID, String owner, String msg){
         // Writes msg to STATUS
-        DatabaseReference db = fdb.getReference("StoreOwner-UserList");
+        DatabaseReference db = fdb.getReference();
         CompletableFuture<Boolean> res = new CompletableFuture<>();
-        db.child(owner).child("orders").child(orderID).setValue(msg);
+        db.child("StoreOwner-UserList").child(owner)
+                .child("orders").child(orderID).setValue(msg);
+
+        db.child("Global-OrderList").child(orderID).child(owner)
+                .child("STATUS").setValue(msg);
+
+
     }
+
 
     public CompletableFuture<Boolean> getStatusOwner(String orderID, String owner){
         // Returns true if StoreOwner-List/orderID/STATUS is 1
         DatabaseReference db = fdb.getReference("StoreOwner-UserList");
         CompletableFuture<Boolean> res = new CompletableFuture<>();
 
-        db.child(owner).child("orders").child(orderID)
+        db.child(owner).child("orders").child(orderID).child("STATUS")
                 .addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    if(res.complete(snapshot.getValue().toString().equals("1"))){
+                    if(snapshot.getValue().toString().equals("1")){
+                        Log.i("COMPLETED", snapshot.getValue().toString());
                         res.complete(true);
                     }
                     return;

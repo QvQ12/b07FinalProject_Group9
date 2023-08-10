@@ -27,7 +27,6 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.MyViewHold
         this.context = context;
         this.inventory = inventory;
         this.fragmentManager = fragmentManager;
-        Log.i("INVENTORY", inventory.toString());
     }
 
     @NonNull

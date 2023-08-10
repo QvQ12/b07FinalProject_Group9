@@ -99,6 +99,7 @@ public class StatusPage extends Fragment {
 
         status = view.findViewById(R.id.status); // Initialize textView to status text-box
         om.getOrderStatusForShopper(key).thenAccept(res -> {
+            Log.i("ORDERSTATUS", res.toString());
             String statusText = orderStatus(res);
             status.setText(statusText);
         });
