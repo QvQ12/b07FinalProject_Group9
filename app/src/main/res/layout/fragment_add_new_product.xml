@@ -93,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/enter_price"
+        android:hint="Enter Product Description"
         android:inputType="text"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/product_description_textView"
