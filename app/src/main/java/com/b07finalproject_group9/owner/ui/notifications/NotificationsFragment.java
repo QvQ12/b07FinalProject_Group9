@@ -68,7 +68,6 @@ public class NotificationsFragment extends Fragment {
         // Fetch order keys for the logged-in store owner
         notificationAdapter = new NotificationAdapter((getContext()),notificationsList,getActivity().getSupportFragmentManager());
         om.getOrderKeysFromStoreOwner(MainActivity.currUser.getUsername()).thenAccept(res -> processKey(res));
-        Log.i("ORDER", notificationsList.toString());
 
         Button returnToMainButton = view.findViewById(R.id.notificationsReturnButton);
         returnToMainButton.setOnClickListener(new View.OnClickListener() {

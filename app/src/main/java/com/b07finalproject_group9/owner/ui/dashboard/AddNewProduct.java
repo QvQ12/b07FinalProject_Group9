@@ -57,7 +57,7 @@ public class AddNewProduct extends Fragment {
 
                     // Navigate to DashboardFragment
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.container, new DashboardFragment()); // Assuming 'container' is the ID of your fragment container
+                    transaction.replace(R.id.addNewProduct, new DashboardFragment()); // Assuming 'container' is the ID of your fragment container
                     transaction.commit();
 
                 } catch (NumberFormatException e) {

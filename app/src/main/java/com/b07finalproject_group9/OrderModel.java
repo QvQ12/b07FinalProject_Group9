@@ -11,6 +11,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.snapshot.BooleanNode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -108,6 +109,38 @@ public class OrderModel extends DatabaseModel{
         return res;
     }
 
+    public void setStatusOwner(String orderID, String owner, String msg){
+        // Writes msg to STATUS
+        DatabaseReference db = fdb.getReference("StoreOwner-UserList");
+        CompletableFuture<Boolean> res = new CompletableFuture<>();
+        db.child(owner).child("orders").child(orderID).setValue(msg);
+    }
+
+    public CompletableFuture<Boolean> getStatusOwner(String orderID, String owner){
+        // Returns true if StoreOwner-List/orderID/STATUS is 1
+        DatabaseReference db = fdb.getReference("StoreOwner-UserList");
+        CompletableFuture<Boolean> res = new CompletableFuture<>();
+
+        db.child(owner).child("orders").child(orderID)
+                .addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    if(res.complete(snapshot.getValue().toString().equals("1"))){
+                        res.complete(true);
+                    }
+                    return;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                res.complete(false);
+            }
+        });
+        return res;
+    }
+
     public CompletableFuture<ArrayList<String>> getProductIDbyOrder(String orderID){
         CompletableFuture<ArrayList<String>> res = new CompletableFuture<>();
 
@@ -135,5 +168,7 @@ public class OrderModel extends DatabaseModel{
 
         return res;
     }
+
+
 
 }

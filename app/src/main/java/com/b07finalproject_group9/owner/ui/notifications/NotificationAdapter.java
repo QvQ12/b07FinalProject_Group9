@@ -1,6 +1,7 @@
 package com.b07finalproject_group9.owner.ui.notifications;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.b07finalproject_group9.MainActivity;
+import com.b07finalproject_group9.OrderModel;
 import com.b07finalproject_group9.R;
 import com.b07finalproject_group9.owner.ui.dashboard.ProductAdapter;
 
@@ -20,6 +23,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     private ArrayList<String> notifications;
     private Context context;
     private FragmentManager fragmentManager;
+    private OrderModel om = new OrderModel();
     private boolean isClicked = false;
 
 
@@ -36,23 +40,45 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         return new MyViewHolder(v);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         String notification = notifications.get(position);
         holder.notificationText.setText(notification);
 
         Button completed = holder.itemView.findViewById(R.id.completed);
+
+        om.getStatusOwner(notification, MainActivity.currUser.getUsername())
+                .thenAccept(res->{
+                    Log.i("COMPLETED", res.toString());
+                    if(res){
+                        isClicked = true;
+                        completed.setText("Completed!");
+                        completed.setBackgroundTintList(context
+                                .getResources().getColorStateList(R.color.clickedButtonColor));
+                    } else{
+                        isClicked = false;
+                        completed.setText("Not Completed!");
+                        completed.setBackgroundTintList(context
+                                .getResources().getColorStateList(R.color.defaultButtonColor));
+                    }
+                });
         completed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isClicked) {
-                    completed.setText("Not Completed!");
-                    completed.setBackgroundTintList(context.getResources().getColorStateList(R.color.defaultButtonColor));
-                } else {
+                if(isClicked){
                     completed.setText("Completed!");
-                    completed.setBackgroundTintList(context.getResources().getColorStateList(R.color.clickedButtonColor));
+                    completed.setBackgroundTintList(context
+                            .getResources().getColorStateList(R.color.clickedButtonColor));
+                    isClicked = false;
+                    om.setStatusOwner(notification, MainActivity.currUser.getUsername(), "1");
+                } else{
+                    completed.setText("Not Completed!");
+                    completed.setBackgroundTintList(context
+                            .getResources().getColorStateList(R.color.defaultButtonColor));
+                    om.setStatusOwner(notification, MainActivity.currUser.getUsername(), "0");
+                    isClicked = true;
                 }
-                isClicked = !isClicked;
             }
         });
     }
