@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.b07finalproject_group9.MainActivity;
 import com.b07finalproject_group9.R;
+import com.b07finalproject_group9.owner.OwnerDashboardFragment;
 import com.b07finalproject_group9.owner.StoreOwnerInventoryModel;
 
 public class EditProduct extends Fragment {
@@ -53,6 +54,16 @@ public class EditProduct extends Fragment {
                         Integer.parseInt(quantity_editText.getText().toString()),
                         description_editText.getText().toString());
                 Toast.makeText(getActivity(), "Product successfully edited: ", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Button back = view.findViewById(R.id.back_button);
+        back.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Fragment f = new DashboardFragment();
+                FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+                ft.replace(R.id.main_login_redirect, f).commit();
             }
         });
         return view;
