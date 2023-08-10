@@ -25,6 +25,7 @@ import android.widget.Button;
 import com.b07finalproject_group9.OrderModel;
 import com.b07finalproject_group9.MainActivity;
 import com.b07finalproject_group9.R;
+import com.b07finalproject_group9.owner.OwnerDashboardFragment;
 import com.b07finalproject_group9.shopper.dashboard.ShopperDashboardFragment;
 import java.util.ArrayList;
 
@@ -73,11 +74,13 @@ public class NotificationsFragment extends Fragment {
         returnToMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment f = new ShopperDashboardFragment();
+                Fragment f = new OwnerDashboardFragment();
                 FragmentTransaction ft = getParentFragmentManager().beginTransaction();
                 ft.replace(R.id.main_login_redirect, f).commit();
             }
         });
+
+
 
         return view;
     }

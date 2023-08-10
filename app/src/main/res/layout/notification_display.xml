@@ -44,6 +44,18 @@
             >
         </LinearLayout>
 
+        <Button
+            android:id="@+id/completed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:backgroundTint="@color/defaultButtonColor"
+            android:text="Not Completed"
+            android:textColorHighlight="#C4B8D8"
+            android:textColorLink="#F4F0F0"
+            app:rippleColor="#000000"
+            tools:visibility="visible" />
+
     </LinearLayout>
 
 

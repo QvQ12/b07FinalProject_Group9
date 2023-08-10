@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     private ArrayList<String> notifications;
     private Context context;
     private FragmentManager fragmentManager;
+    private boolean isClicked = false;
+
+
 
     public NotificationAdapter(Context context, ArrayList<String> notifications,FragmentManager fragmentManager) {
         this.context = context;
@@ -36,7 +40,21 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         String notification = notifications.get(position);
         holder.notificationText.setText(notification);
-        // You can add onClickListeners here for each notification item
+
+        Button completed = holder.itemView.findViewById(R.id.completed);
+        completed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isClicked) {
+                    completed.setText("Not Completed!");
+                    completed.setBackgroundTintList(context.getResources().getColorStateList(R.color.defaultButtonColor));
+                } else {
+                    completed.setText("Completed!");
+                    completed.setBackgroundTintList(context.getResources().getColorStateList(R.color.clickedButtonColor));
+                }
+                isClicked = !isClicked;
+            }
+        });
     }
 
     @Override
