@@ -1,51 +1,29 @@
-package com.b07finalproject_group9.login;
+package com.b07finalproject_group9.login.ownersignup;
 
 import android.content.Intent;
-import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.b07finalproject_group9.MainActivity;
 import com.b07finalproject_group9.R;
-import com.b07finalproject_group9.objects.User;
+import com.b07finalproject_group9.login.ownerlogin.OwnerLoginFragment;
+import com.b07finalproject_group9.login.shopperlogin.ShopperLoginFragment;
+import com.b07finalproject_group9.login.shoppersignup.ShopperSignupFragment;
+import com.b07finalproject_group9.login.mvpbase.BaseFragment;
 import com.b07finalproject_group9.owner.OwnerDashboardFragment;
 
-public class OwnerSignUpFragment extends Fragment {
+import java.security.acl.Owner;
 
-    private void performOwnerSignUp(String storename, String username, String password){
-        LoginModel lm = new LoginModel();
-        lm.signUpStoreOwner(storename, username, password)
-                .thenAccept(success -> {
-                    if (success) {
-                        MainActivity.currUser = new User(username);
-                        Fragment f = new OwnerDashboardFragment();
-                        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-                        ft.replace(R.id.main_login_redirect, f).commit();
-                    } else {
-                        Toast.makeText(getActivity(), "Signup Unsuccessful",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-
-    private void setSpinner(View view, int i){
-        Spinner spinner;
-        spinner = (Spinner) view.findViewById(R.id.spinner);
-        if(spinner!=null)spinner.setSelection(i);
-    }
-
+public class OwnerSignupFragment extends BaseFragment<OwnerSignupPresenter> {
     private void openShopperSignup(){
-        Fragment f = new ShopperSignUpFragment();
+        Fragment f = new ShopperSignupFragment();
         FragmentTransaction ft = getParentFragmentManager().beginTransaction();
         ft.replace(R.id.main_login_redirect, f).commit();
     }
@@ -56,24 +34,22 @@ public class OwnerSignUpFragment extends Fragment {
         ft.replace(R.id.main_login_redirect, f).commit();
     }
 
-    private void openOwnerSignup(){
-        Fragment f = new OwnerSignUpFragment();
-        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-        ft.replace(R.id.main_login_redirect, f).commit();
-    }
+
 
     private void  openShopperLogin(){
         Fragment f = new ShopperLoginFragment();
         FragmentTransaction ft = getParentFragmentManager().beginTransaction();
         ft.replace(R.id.main_login_redirect, f).commit();
     }
+    @Override
+    public int getContentViewID() {
+        return R.layout.ownersignup;
+    }
+
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.ownersignup, container, false);
-        setSpinner(view,3);
+    public void initListener(View view) {
         Button btnSignUp = view.findViewById(R.id.owner_signup_button);
         EditText storename_editText = view.findViewById(R.id.storename_editText);
         EditText username_editText = view.findViewById(R.id.username_editText);
@@ -84,7 +60,7 @@ public class OwnerSignUpFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(OwnerSignUpFragment.this.getActivity(), MainActivity.class);
+                Intent intent = new Intent(OwnerSignupFragment.this.getActivity(), MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -100,9 +76,6 @@ public class OwnerSignUpFragment extends Fragment {
                     openOwnerLogin();
                 }
 
-//                if(spinner.getSelectedItem().toString().contains("owner signup")){
-//                    openOwnerSignup();
-//                }
 
                 if(spinner.getSelectedItem().toString().contains("shopper login")){
                     openShopperLogin();
@@ -121,10 +94,33 @@ public class OwnerSignUpFragment extends Fragment {
                 String storename = storename_editText.getText().toString();
                 String username = username_editText.getText().toString();
                 String password = password_editText.getText().toString();
-                performOwnerSignUp(storename, username, password);
+                mPresenter.performOwnerSignUp(storename, username, password);
             }
         });
+    }
 
-        return view;
+    @Override
+    public OwnerSignupPresenter getmPresenterInstance() {
+        return new OwnerSignupPresenter();
+    }
+
+    @Override
+    public void initSpinner(View view) {
+        Spinner spinner;
+        spinner = (Spinner) view.findViewById(R.id.spinner);
+        if(spinner!=null)spinner.setSelection(3);
+    }
+
+    @Override
+    public void successView() {
+        Fragment f = new OwnerDashboardFragment();
+        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+        ft.replace(R.id.main_login_redirect, f).commit();
+    }
+
+    @Override
+    public void unsuccessView() {
+        Toast.makeText(getActivity(), "Signup Unsuccessful",
+                Toast.LENGTH_SHORT).show();
     }
 }

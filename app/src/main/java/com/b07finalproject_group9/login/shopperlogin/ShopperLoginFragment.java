@@ -1,49 +1,27 @@
-package com.b07finalproject_group9.login;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+package com.b07finalproject_group9.login.shopperlogin;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.b07finalproject_group9.MainActivity;
 import com.b07finalproject_group9.R;
-import com.b07finalproject_group9.objects.User;
+import com.b07finalproject_group9.login.ownerlogin.OwnerLoginFragment;
+import com.b07finalproject_group9.login.ownersignup.OwnerSignupFragment;
+import com.b07finalproject_group9.login.shoppersignup.ShopperSignupFragment;
+import com.b07finalproject_group9.login.mvpbase.BaseFragment;
 import com.b07finalproject_group9.shopper.dashboard.ShopperDashboardFragment;
 
-public class ShopperLoginFragment extends Fragment {
-
-    private void performShopperLogin(String username, String password){
-        LoginModel lm = new LoginModel();
-        lm.loginShopper(username, password)
-                .thenAccept(success -> {
-                    if (success) {
-                        MainActivity.currUser = new User(username);
-                        Fragment f = new ShopperDashboardFragment();
-                        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-                        ft.replace(R.id.main_login_redirect, f).commit();
-                    } else {
-                        Toast.makeText(getActivity(), "Login Unsuccessful",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-    private void setSpinner(View view,int i){
-        Spinner spinner;
-        spinner = (Spinner) view.findViewById(R.id.spinner);
-        if(spinner!=null)spinner.setSelection(i);
-    }
-
+public class ShopperLoginFragment extends BaseFragment<ShopperLoginPresenter> {
     private void openShopperSignup(){
-        Fragment f = new ShopperSignUpFragment();
+        Fragment f = new ShopperSignupFragment();
         FragmentTransaction ft = getParentFragmentManager().beginTransaction();
         ft.replace(R.id.main_login_redirect, f).commit();
     }
@@ -55,23 +33,21 @@ public class ShopperLoginFragment extends Fragment {
     }
 
     private void openOwnerSignup(){
-        Fragment f = new OwnerSignUpFragment();
-        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-        ft.replace(R.id.main_login_redirect, f).commit();
-    }
-
-    private void  openShopperLogin(){
-        Fragment f = new ShopperLoginFragment();
+        Fragment f = new OwnerSignupFragment();
         FragmentTransaction ft = getParentFragmentManager().beginTransaction();
         ft.replace(R.id.main_login_redirect, f).commit();
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.shopperlogin, container, false);
-        setSpinner(view,0);
+    public int getContentViewID() {
+        return R.layout.shopperlogin;
+    }
+
+
+
+    @Override
+    public void initListener(View view) {
         EditText username_editText = view.findViewById(R.id.username_editText);
         EditText password_editText = view.findViewById(R.id.password_editText);
         Button btnLogin = view.findViewById(R.id.shopper_login_button);
@@ -101,9 +77,7 @@ public class ShopperLoginFragment extends Fragment {
                     openOwnerSignup();
                 }
 
-//                if(spinner.getSelectedItem().toString().contains("shopper login")){
-//                    openShopperLogin();
-//                }
+
             }
 
             @Override
@@ -119,13 +93,33 @@ public class ShopperLoginFragment extends Fragment {
             public void onClick(View view){
                 String username = username_editText.getText().toString();
                 String password = password_editText.getText().toString();
-                performShopperLogin(username, password);
+                mPresenter.performShopperLogin(username, password);
             }
         });
-
-        return view;
     }
 
+    @Override
+    public ShopperLoginPresenter getmPresenterInstance() {
+        return new ShopperLoginPresenter();
+    }
 
+    @Override
+    public void initSpinner(View view) {
+        Spinner spinner;
+        spinner = (Spinner) view.findViewById(R.id.spinner);
+        if(spinner!=null)spinner.setSelection(0);
+    }
+
+    @Override
+    public void successView() {
+        Fragment f = new ShopperDashboardFragment();
+        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+        ft.replace(R.id.main_login_redirect, f).commit();
+    }
+
+    @Override
+    public void unsuccessView() {
+        Toast.makeText(getActivity(), "Login Unsuccessful",
+                Toast.LENGTH_SHORT).show();
+    }
 }
-

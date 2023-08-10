@@ -13,18 +13,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.AppCompatImageButton;
 
 
 import com.b07finalproject_group9.MainActivity;
 import com.b07finalproject_group9.databinding.FragmentDashboardBinding;
 import com.b07finalproject_group9.R;
-import com.b07finalproject_group9.login.ShopperLoginFragment;
 import com.b07finalproject_group9.objects.Store;
-import com.b07finalproject_group9.owner.ui.dashboard.AddNewProduct;
 import com.b07finalproject_group9.shopper.ShopperModel;
 import com.b07finalproject_group9.shopper.cart.ShoppingCart;
-import com.b07finalproject_group9.shopper.dashboard.StoreAdapter;
 import com.b07finalproject_group9.shopper.order.OrderDashboard;
 
 

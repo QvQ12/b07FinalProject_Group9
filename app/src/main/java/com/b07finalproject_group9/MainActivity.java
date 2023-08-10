@@ -10,10 +10,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.b07finalproject_group9.databinding.MainActivityBinding;
-import com.b07finalproject_group9.login.OwnerLoginFragment;
-import com.b07finalproject_group9.login.OwnerSignUpFragment;
-import com.b07finalproject_group9.login.ShopperLoginFragment;
-import com.b07finalproject_group9.login.ShopperSignUpFragment;
+import com.b07finalproject_group9.login.ownerlogin.OwnerLoginFragment;
+import com.b07finalproject_group9.login.ownersignup.OwnerSignupFragment;
+import com.b07finalproject_group9.login.shopperlogin.ShopperLoginFragment;
+import com.b07finalproject_group9.login.shoppersignup.ShopperSignupFragment;
 import com.b07finalproject_group9.objects.User;
 import com.google.firebase.FirebaseApp;
 
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         btn_shoppersignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment f = new ShopperSignUpFragment();
+                Fragment f = new ShopperSignupFragment();
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.main_login_redirect, f).commit();
             }
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         btn_ownersignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment f = new OwnerSignUpFragment();
+                Fragment f = new OwnerSignupFragment();
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.main_login_redirect, f).commit();
             }
