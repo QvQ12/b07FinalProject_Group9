@@ -47,7 +47,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         holder.ProductPrice.setText(product.getProductPrice());
         holder.ProductDescription.setText(product.getProductDescription());
         holder.ProductId.setText(product.getProductId());
-        EditProduct.key = product.getProductId();
+//        EditProduct.key = product.getProductId();
+        holder.itemView.findViewById(R.id.editButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment someFragment = new EditProduct(product.getProductId());
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.fragment_container_view, someFragment).commit();
+                transaction.addToBackStack(null);
+            }
+        });
     }
 
 
@@ -66,15 +75,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             ProductPrice = productView.findViewById(R.id.productPrice);
             ProductDescription = productView.findViewById(R.id.productDescription);
             ProductId = productView.findViewById(R.id.ProductId);
-            itemView.findViewById(R.id.editButton).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Fragment someFragment = new EditProduct();
-                    FragmentTransaction transaction = fragmentManager.beginTransaction();
-                    transaction.replace(R.id.fragment_container_view, someFragment).commit();
-                    transaction.addToBackStack(null);
-                }
-            });
+
         }
 
     }

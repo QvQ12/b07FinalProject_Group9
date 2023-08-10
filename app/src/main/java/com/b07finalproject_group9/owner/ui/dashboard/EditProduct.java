@@ -22,13 +22,16 @@ public class EditProduct extends Fragment {
     Button ConfirmEdit;
     private EditText product_name_editText, quantity_editText, price_editText, description_editText;
 
-    public static String key;
+    public  String key;
+
+    public EditProduct(String productId) {
+        this.key = productId;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_edit_product, container, false);
-
         product_name_editText = view.findViewById(R.id.name_editText);
         quantity_editText = view.findViewById(R.id.quantity_editText);
         price_editText = view.findViewById(R.id.price_editText);
