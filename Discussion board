@@ -117,6 +117,11 @@ Completed:
     - Order list , display info of product on Shopper (Alvin)
     - Norification (order) list on Owner (Raymond)
     - MVP Testing (Cristal)
-TODO (by 8PM):
-    - Owner up-to-date access to orders (link from shopper & firebase)
-    - Owner should be able to mark orders as completed
+Completed (by 8PM):
+    - Owner up-to-date access to orders (link from shopper & firebase) (By Miko and Alvin)
+    - Owner should be able to mark orders as completed (by Jenna)
+    - MVP refactoring (by Cristal and Miko)
+TODO (by 9PM):
+    - error checking (By Raymond)
+    - firebase final linkage (by Miko)
+    - MVP
