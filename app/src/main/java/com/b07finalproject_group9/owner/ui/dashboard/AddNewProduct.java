@@ -48,8 +48,8 @@ public class AddNewProduct extends Fragment {
                         return;
                     }
 
-                    int quantity = Integer.valueOf(quantity_editText.getText().toString().trim());
-                    Double price = Double.valueOf(price_editText.getText().toString().trim());
+                    int quantity = Integer.parseInt(quantity_editText.getText().toString().trim());
+                    double price = Double.parseDouble(price_editText.getText().toString().trim());
                     String description = String.valueOf(description_editText.getText()).trim();
 
                     String key = sm.addProductInventory(username, prod_name, price, quantity, description);
@@ -57,7 +57,7 @@ public class AddNewProduct extends Fragment {
 
                     // Navigate to DashboardFragment
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.container, new DashboardFragment()); // Assuming 'container' is the ID of your fragment container
+                    transaction.replace(R.id.addNewProduct, new DashboardFragment()); // Assuming 'container' is the ID of your fragment container
                     transaction.commit();
 
                 } catch (NumberFormatException e) {
