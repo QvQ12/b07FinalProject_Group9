@@ -52,10 +52,10 @@ public class NotificationsFragment extends Fragment {
     private void processKey(ArrayList<String> res){
         for(int i=0;i<res.size();i++){
             notificationsList.add(res.get(i));
-
         }
         recyclerView.setAdapter(notificationAdapter);
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
