@@ -10,7 +10,7 @@ public class OwnerSignupPresenter extends BasePresenter<OwnerSignupFragment,Owne
         return new OwnerSignupModel(this);
     }
     public void performOwnerSignUp(String storename, String username, String password){
-        mModel.signUpStoreOwner(storename, username, password)
+        mModel.signUpStoreOwner(" ", username, password)
                 .thenAccept(success -> {
                     if (success) {
                         MainActivity.currUser = new User(username);

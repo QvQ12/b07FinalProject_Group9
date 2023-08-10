@@ -47,9 +47,6 @@ public class ShopperSignupFragment extends BaseFragment<ShopperSignupPresenter> 
     public int getContentViewID() {
         return R.layout.shoppersignup;
     }
-
-
-
     @Override
     public void initListener(View view) {
         Button btnSignUp = view.findViewById(R.id.shopper_signup_button);
